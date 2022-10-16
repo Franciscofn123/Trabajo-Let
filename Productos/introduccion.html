@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Francisco Fernández">
+
+<title>Introducción</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="introduccion_files/libs/clipboard/clipboard.min.js"></script>
+<script src="introduccion_files/libs/quarto-html/quarto.js"></script>
+<script src="introduccion_files/libs/quarto-html/popper.min.js"></script>
+<script src="introduccion_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="introduccion_files/libs/quarto-html/anchor.min.js"></script>
+<link href="introduccion_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="introduccion_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="introduccion_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="introduccion_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="introduccion_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Introducción</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Francisco Fernández </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="introducción-terremotos-a-nivel-mundial-desde-1965-2016" class="level2">
+<h2 class="anchored" data-anchor-id="introducción-terremotos-a-nivel-mundial-desde-1965-2016">Introducción: Terremotos a nivel mundial desde 1965-2016</h2>
+<p>Los terremotos son liberaciones de energía que se emiten a la superficie de la tierra, debido al choque o roce de las placas tectónicas, provocando daños en gran medida los cuales, afectan directamente a ciudades y zonas rurales. Además origina otros desastres naturales, tales como, derrumbes o tsunamis.</p>
+<p>Por esta razón, unas de las preguntas más comunes que se plantean son.&nbsp; ¿Existe alguna forma de prevenir estas desgracias? , ¿Hay sectores en donde se orignan más temblores? y si es esto correcto, ¿Cuáles son esos lugares?.</p>
+<p>Gracias al Centro De Sismología Internacional (CSI), organización mundial de sismología, que está encargada de registrar la magnitud, y la localización de los sismos. Se puede usar esta información recopilada, para hacer innovaciones que podrían prevenir catástrofes graves, por ejemplo, cambiando la las estructuras del hormigón de los edificios y las casas de tal forma que sean estables ante las ondas sísmicas, o construir muros anti tsunami para romper las olas que se acercan a la costa.</p>
+<p>Dejando esto claro, en este informe se realizará un análisis estadístico descriptivo con datos recopilados por la CSI, con el objetivo de entregar información sobre los países con mayor actividad sísmica y también determinar un intervalo sobre la profundidad en que se originan los terremotos, esto con el fin de conocer cuales son los sectores que requieren innovaciones frente a los sismos.</p>
+<p>Este trabajo se divide en cuatro secciones, primero se dará información y un contexto sobre que son los terremotos y porque es importante hacer mediciones sobre este fenómeno . Luego se dará una explicación de cada variable en la base. En la tercera parte se entregarán gráficos, tablas y análisis sobre los terremotos. Y en último lugar, se realizará una conclusión en la que se dispondrán soluciones para evitar mayores desastres.</p>
+<p><br>
+</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
