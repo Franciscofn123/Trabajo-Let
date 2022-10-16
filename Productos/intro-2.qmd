@@ -1,0 +1,18 @@
+---
+title: "Introduccion-2"
+author: "Francisco Fernández"
+format: html
+editor: visual
+---
+
+## Introducción: Terremotos a nivel mundial desde 1965-2016
+
+Los terremotos son liberaciones de energía que se emiten a la superficie de la tierra, debido al choque o roce de las placas tectónicas, provocando daños en gran medida los cuales, afectan directamente a ciudades y zonas rurales. Además origina otros desastres naturales, tales como, derrumbes o tsunamis.
+
+Por esta razón, unas de las preguntas más comunes que se plantean son.  ¿Existe alguna forma de prevenir estas desgracias? , ¿Hay sectores en donde se orignan más temblores? y si es esto correcto, ¿Cuáles son esos lugares?.
+
+Gracias al Centro De Sismología Internacional (CSI), organización mundial de sismología, que está encargada de registrar la magnitud, y la localización de los sismos. Se puede usar esta información recopilada, para hacer innovaciones que podrían prevenir catástrofes graves, por ejemplo, cambiando la las estructuras del hormigón de los edificios y las casas de tal forma que sean estables ante las ondas sísmicas, o construir muros anti tsunami para romper las olas que se acercan a la costa.
+
+Dejando esto claro, en este informe se realizará un análisis estadístico descriptivo con datos recopilados por la CSI, con el objetivo de entregar información sobre los países con mayor actividad sísmica y también determinar un intervalo sobre la profundidad en que se originan los terremotos, esto con el fin de conocer cuales son los sectores que requieren innovaciones frente a los sismos.
+
+Este trabajo se divide en cuatro secciones, primero se dará información y un contexto sobre que son los terremotos y porque es importante hacer mediciones sobre este fenómeno . Luego se dará una explicación de cada variable en la base. En la tercera parte se entregarán gráficos, tablas y análisis sobre los terremotos. Y en último lugar, se realizará una conclusión en la que se dispondrán soluciones para evitar mayores desastres.
