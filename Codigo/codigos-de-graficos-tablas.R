@@ -69,14 +69,13 @@ v$Hora <- as.numeric(v$Hora)
 ####### tambien se trasforma las fechas a años, para asi saber cuantos terremotos hay a medida que pasa el tiempo
 v$Fecha <- as.numeric(substring(v$Fecha,first = 7))
 
-
 #terremotos en cantidad segun el tiempo
 #grafico 1----
 
 v |> 
   filter(Tipo=="Earthquake") |> 
   ggplot(aes(x=Fecha))+
-  geom_bar(fill = "#79d0cc", size = 1) +
+  geom_bar(fill = "#79d0cc", size =1) +
   labs(title = "Cantidad de terremotos en el mundo por año",
        subtitle = "período entre 1965 y 2016",
        y ="Cantidad",
@@ -86,8 +85,10 @@ v |>
 #una respuesta para este fenomenos es que los sismos registrados corresponden a replicas originadas por
 # el terremoto del 27 de febrero
 
-
-
+which(is.na(v$Fecha))
+v$Fecha[20651] <- 2011
+v$Fecha[7513] <- 1985 
+v$Fecha[3379] <- 1975
 #grafico 2----
 v |> 
   filter(Tipo=="Earthquake", País=="Chile") |> 
@@ -136,6 +137,12 @@ v |>
   geom_histogram()+
   labs(title = "Número de sismos en el mundo según la magnitud",
        subtitle = "período entre 1965 y 2016", y="Cantidad")
+
+datos[3379,]
+v <- v[-7513,]
+v <- v[-3379,]
+v <- v[-20649,]
+any(is.na(v$Hora))
 
 
 #grafico 5----

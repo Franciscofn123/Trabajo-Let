@@ -1,21 +1,21 @@
 ---
-title: "Introducción"
+title: "Terremotos a nivel mundial desde 1965-2016"
 author: "Francisco Fernández"
 format: html
 editor: visual
 ---
 
-## Introducción: Terremotos a nivel mundial desde 1965-2016
+## Introducción 
 
-Los terremotos son liberaciones de energía que se emiten a la superficie de la tierra, debido al choque o roce de las placas tectónicas, provocando daños en gran medida los cuales, afectan directamente a ciudades y zonas rurales. Además origina otros desastres naturales, tales como, derrumbes o tsunamis.
+Los terremotos son liberaciones de energía que se emiten a la superficie de la tierra, debido al choque o roce de las placas tectónicas, y puede provocar daños de gran medida los cuales, afectan directamente a ciudades y zonas rurales. Además origina otros desastres naturales, tales como, derrumbes o tsunamis. Como todos saben, estos desastres son una latente amenaza para las personas.
 
-Por esta razón, unas de las preguntas más comunes que se plantean son:  ¿Existe alguna forma de prevenir estas desgracias? , ¿Hay sectores en donde se originan más temblores? y si es esto correcto, ¿Cuáles son esos lugares?.
+Por esta razón, algunas de las preguntas más comunes que se plantean son:  ¿Existe alguna forma de prevenir estas desgracias?, ¿cuántos sismos occurren aproximadamente en un año?, ¿hay una hora en donde se originan más temblores? y si es esto correcto, ¿cuál es?
 
-Gracias al Centro De Sismología Internacional (CSI), organización mundial de sismología, que está encargada de registrar la magnitud, y la localización de los sismos. Se puede usar esta información recopilada, para hacer innovaciones que podrían prevenir catástrofes graves, por ejemplo, cambiando las estructuras de hormigón de los edificios y las casas de tal forma que sean estables ante las ondas sísmicas, o construir muros anti tsunami para romper las olas que se acercan a la costa.
+Gracias al Centro De Sismología Internacional (CSI), organización mundial, que se encarga de registrar la magnitud, y la localización de los sismos. Es por elllo que con la labor de esta organización se puede usar esta información recopilada, para hacer innovaciones que podrían prevenir catástrofes graves, por ejemplo, cambiando las estructuras de hormigón de los edificios y las casas de tal forma que sean estables ante las ondas sísmicas, o construir muros anti tsunami para romper las olas que se acercan a la costa.
 
-Dejando esto claro, en este informe se realizará un análisis estadístico descriptivo con datos recopilados por la CSI, con el objetivo de entregar información sobre los países con mayor actividad sísmica y también determinar un intervalo sobre la profundidad en que se originan los terremotos, esto con el fin de conocer cuales son los sectores que requieren innovaciones frente a los sismos.
+Dejando esto claro, en este informe se realizará un análisis estadístico descriptivo con datos recopilados por la CSI, con el objetivo de entregar información sobre los países con mayor actividad sísmica y también determinar un intervalo sobre la profundidad en que se originan los terremotos. Se espera así conocer cuáles son los países que requieren innovaciones frente a los sismos.
 
-Este trabajo se divide en cuatro secciones, primero se dará información y un contexto sobre qué son los terremotos y por qué es importante hacer mediciones sobre este fenómeno . Luego se dará una explicación de cada variable en la base. En la tercera parte se entregarán gráficos, tablas y análisis sobre los terremotos. Y en último lugar, se realizará una conclusión en la que se dispondrán soluciones para evitar mayores desastres.
+Este trabajo se divide en cuatro secciones. primero se dará información y contexto sobre qué son los terremotos y por qué es importante hacer mediciones sobre estos fenómeno . Luego se dará una explicación de cada variable disponible en la base del CSI. En la tercera parte se entregarán gráficos, tablas y análisis sobre los terremotos. Y en último lugar, se realizará una conclusión en la que se identificarán posibles patrones en la magnitud, frecuencia y hora de los terremotos.
 
 ## Descripción de variables
 
@@ -113,6 +113,10 @@ v$Hora <- as.numeric(v$Hora)
 ####### tambien se trasforma las fechas a años, para asi saber cuantos terremotos hay a medida que pasa el tiempo
 v$Fecha <- as.numeric(substring(v$Fecha,first = 7))
 
+v$Fecha[20651] <- 2011
+v$Fecha[7513] <- 1985 
+v$Fecha[3379] <- 1975
+
 ```
 
 El siguiente grafico entrega la cantidad de terremotos que hay en el mundo en cada año, desde 1965 hasta 2016
@@ -132,7 +136,7 @@ v |>
 
 ```
 
-Se puede apreciar, que el 2011 fue el año con la mayor cantidad de sismos en el planeta, esto se puede deber a las replicas que fueron originadas por el terremoto de 9,1 en Japón.
+Se puede apreciar, que el 2011 fue el año con la mayor cantidad de sismos en el planeta, esto se puede deber a las replicas que fueron originadas por el terremoto de 9,1 en Japón. Por el contrario, el año con la menor cantidad de sismos es 1965, esto podria explicarse a que en esa epoca no existia aún la tecnologia necesaria para recopilar todos los terremotos que ocurrian en el mundo.
 
 ```{r}
 #| echo: false
@@ -150,6 +154,12 @@ labs(title = "Cantidad de terremotos que ocurren en Chile a medida que pasa el t
 
 ```{r}
 #| echo: false
+v <- v[-7513,]
+v <- v[-3379,]
+v <- v[-20649,]
+
+
+
 v |> 
   filter(Tipo=="Earthquake") |> 
   ggplot(aes(x=Hora))+
