@@ -17,4 +17,161 @@ Dejando esto claro, en este informe se realizará un análisis estadístico desc
 
 Este trabajo se divide en cuatro secciones, primero se dará información y un contexto sobre qué son los terremotos y por qué es importante hacer mediciones sobre este fenómeno . Luego se dará una explicación de cada variable en la base. En la tercera parte se entregarán gráficos, tablas y análisis sobre los terremotos. Y en último lugar, se realizará una conclusión en la que se dispondrán soluciones para evitar mayores desastres.
 
-\
+## Descripción de variables
+
+La siguiente tabla muestra las variables que se usarán en el analisis , a que tipo corresponden, y una breve definicion sobre la información que entregan.
+
+```{r}
+#| echo: false
+
+library(gt)
+nombres <- c("Fecha","Hora","Latitud","Longitud",
+          "Magnitud","País") 
+data.frame(Variables= nombres, 
+           Tipo = c("Fecha",
+                    "Tiempo",
+                    "Numérico",
+                    "Numérico",
+                    "Numérico",
+                    "Carácter"),
+           Descripción = c(
+             "Muestra la fecha en que ocurrio el sismo",
+             "Entrega la hora en que se originó un terremoto",
+             "Señala la latitud como cordenada geografica ",
+             "Señala la longitud como cordenada geografica",
+             "Es la magnitud en escala Richter de los terremotos",
+             "Corresponde al país en el que sucedio el sismo") ) |> 
+  gt() |> 
+  tab_header(title = "Descripción de variables") |> 
+  tab_source_note(source_note = "Fuente: Kaggle.com")
+```
+
+Se puede apreciar una variedad de tipos de variables, pero en este trabajo se usaran en su mayoria las columnas que contienen la fechas, horas, magnitudes, y paises en la que ocurren los terremotos.
+
+## Graficos
+
+Se quiere estudiar la cantidad de terremotos que hay dependiendo de ciertas variables, por el ejemplo el año, la magnitud, la hora, etc. Para ello se recopilaran graficos y tablas que entregaran información sobre la frecuencia de los sismos.
+
+```{r}
+#| echo: false
+#| output: false
+
+
+library(gtsummary)
+library(gt)
+library(readxl)
+library(readr)
+library(dplyr)        
+library(tidyr)        
+library(stringr) 
+library(ggplot2)
+library(forcats)
+library(ggtext)  
+library(gghighlight) 
+library(showtext)
+library(ggthemes)
+library(plotrix)
+library(zoom)
+library(countrycode)
+
+datos <- read_csv("https://raw.githubusercontent.com/Franciscofn123/Trabajo-Let/main/Datos/terremotos_sin_procesar.csv", show_col_types = FALSE)
+
+v <- data.frame(datos$Date,datos$Time,datos$Latitude,datos$Longitude,datos$Type,datos$Magnitude)
+
+
+
+
+q <- read_csv("/Users/joelf/OneDrive/Documentos/let/Trabajo-Let/Datos/País.csv",show_col_types = FALSE) 
+
+v <- cbind(v,q)
+
+
+
+#cambiar nombre de variables
+names(v)= c("Fecha", "Hora","Latitud","Longitud", "Tipo", "Magnitud", "País")
+
+#Traducir nombres de paises----
+
+v[v=="Fr. S. Antarctic Lands"] <- "Tierras Antárticas Francesas"
+v[v=="S. Sudan"] <- "South Sudan"
+v[v=="Somaliland"] <- "Somalia"
+v <- v |> 
+  mutate(País = countrycode(sourcevar = País,
+                               origin = "country.name",
+                               destination = "cldr.name.es"),
+         .after = País) 
+
+
+######## se dejan las variables que se quieren ocupar, tiempo, latitud, longitud, magnitud, tipo y pais de origen
+
+
+
+####### se trasforma hora de terremoto a hora, para saber a que hora fue (como funcion parte entera)
+v$Hora <- format(as.POSIXct(v$Hora), format = "%H")
+v$Hora <- as.numeric(v$Hora)
+
+####### tambien se trasforma las fechas a años, para asi saber cuantos terremotos hay a medida que pasa el tiempo
+v$Fecha <- as.numeric(substring(v$Fecha,first = 7))
+
+```
+
+El siguiente grafico entrega la cantidad de terremotos que hay en el mundo en cada año, desde 1965 hasta 2016
+
+```{r}
+#| echo: false
+library(ggplot2)
+v |> 
+  filter(Tipo=="Earthquake") |> 
+  ggplot(aes(x=Fecha))+
+  geom_bar(fill = "#79d0cc", size = 1) +
+  labs(title = "Cantidad de terremotos en el mundo por año",
+       subtitle = "período entre 1965 y 2016",
+       y ="Cantidad",
+       x = "Años")+
+  scale_x_continuous(breaks = seq(1965, 2016, by = 5))
+
+```
+
+Se puede apreciar, que el 2011 fue el año con la mayor cantidad de sismos en el planeta, esto se puede deber a las replicas que fueron originadas por el terremoto de 9,1 en Japón.
+
+```{r}
+#| echo: false
+v |> 
+  filter(Tipo=="Earthquake", País=="Chile") |> 
+  ggplot(aes(x=Fecha))+
+  geom_bar(fill = "#79d0cc", size = 1)+ 
+labs(title = "Cantidad de terremotos que ocurren en Chile a medida que pasa el tiempo",
+     subtitle = "período entre 1965 y 2016",
+     y ="Cantidad",
+     x = "Años")+
+  scale_x_continuous(breaks = seq(1965, 2016, by = 5))
+
+```
+
+```{r}
+#| echo: false
+v |> 
+  filter(Tipo=="Earthquake") |> 
+  ggplot(aes(x=Hora))+
+  geom_bar(color="black",fill="#FF7F50")+
+  theme_bw()+
+  labs(title = "Número de sismos en el mundo según la hora en que se origina",
+       subtitle = "período entre 1965 y 2016", y="Cantidad", x= "Hora (0-24)")
+```
+
+```{r}
+#| echo: false
+library(gtsummary)
+library(gt)
+
+
+#encontrar maximos en magnitud por año
+
+mayores <- v[order(v$Magnitud, decreasing = TRUE),]
+mayores<- mayores[c(1,2,3,4,5),]
+mayores <- mayores[,c(1,6,7)]
+
+
+#tabla 5 mayores terremotos en el periodo estudiado
+gt(mayores)
+```

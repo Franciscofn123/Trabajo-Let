@@ -1,127 +1,161 @@
+library(gtsummary)
+library(gt)
 library(readxl)
 library(readr)
-#install.packages("dplyr")
 library(dplyr)        
 library(tidyr)        
 library(stringr) 
-library(readr)
-library(dplyr)
 library(ggplot2)
 library(forcats)
 library(ggtext)  
 library(gghighlight) 
 library(showtext)
 library(ggthemes)
-#install.packages("datos")
+library(plotrix)
+library(zoom)
+library(countrycode)
+datos <- NULL
+datos <- read_csv("/Users/joelf/OneDrive/Documentos/let/Trabajo-Let/Datos/terremotos_sin_procesar.csv", show_col_types = FALSE)
 
-
-datos <- read_csv("Datos/terremotos_sin_procesar.csv")
-
-
-
-#geolocalizacion inversa---
-#install.packages("maps")
-
-library(maps)
-
-startm <- Sys.time()
-
-country<-map.where(database="world", 
-                   datos$Longitude, datos$Latitude)
-
-endm <- Sys.time()
-
-country
-my.na <- is.na(country)
-table(my.na)
-###################### otra forma de geolocalizacion inversa
-install.packages("tidygeocoder")
-library(tidygeocoder)
-reverse <- datos %>%
-  reverse_geocode(lat = Latitude, long = Longitude, method = 'osm',
-                  address = address_found, full_results = TRUE) 
+v <- data.frame(datos$Date,datos$Time,datos$Latitude,datos$Longitude,datos$Type,datos$Magnitude)
 
 
 
+library(sf)
+library(rnaturalearth)
+library(mregions)
+sf_use_s2(FALSE)
 
-##################################################################
-library(tidygeocoder)
-reverse <- datos[1:10,] %>%
-  reverse_geocode(lat = Latitude, long = Longitude, method = 'osm',
-                  address = address_found, full_results = TRUE)
+# Con st_join() con una capa de paises --------------------------------------
 
-reverse
+world <- rnaturalearth::ne_countries(scale = "small", returnclass = "sf") %>% 
+  st_make_valid()
+
+join_pais <- df_sp %>% 
+  st_join(world, join = st_nearest_feature)
+show_col_types = FALSE
+
+p <- join_pais["name"]
+p <- data.frame(p$name)
+setwd("/Users/joelf/OneDrive/Documentos/let/Trabajo-Let/Datos")
+write.table(p,file="País.csv",sep=",",row.names = F)
+
+q <- read_csv("/Users/joelf/OneDrive/Documentos/let/Trabajo-Let/Datos/País.csv", show_col_types = FALSE)
+
+v <- cbind(v,q)
+#cambiar nombre de variables
+names(v)= c("Fecha", "Hora","Latitud","Longitud", "Tipo", "Magnitud", "País")
+
+#Traducir nombres de paises----
+
+v[v=="Fr. S. Antarctic Lands"] <- "Tierras Antárticas Francesas"
+v[v=="S. Sudan"] <- "South Sudan"
+v[v=="Somaliland"] <- "Somalia"
+v <- v |> 
+  mutate(País = countrycode(sourcevar = País,
+                            origin = "country.name",
+                            destination = "cldr.name.es"),
+         .after = País) 
+
+
+######## se dejan las variables que se quieren ocupar, tiempo, latitud, longitud, magnitud, tipo y pais de origen
 
 
 
-
-
-
-
-
-
-
-######## se dejan las variables que se quieren ocupar, tiempo, latitud, longitud, magnitud y profundidad
-
-
-v <- datos[1:9]
-v <- v[,-8]
-v <- v[,-5]
-v <- v[,-6]
-v <- cbind(v,country)
-tipos <- datos$Type
-v <- cbind(v,tipos)
 ####### se trasforma hora de terremoto a hora, para saber a que hora fue (como funcion parte entera)
-v$Time <- format(as.POSIXct(v$Time), format = "%H")
-v$Time <- as.numeric(v$Time)
+v$Hora <- format(as.POSIXct(v$Hora), format = "%H")
+v$Hora <- as.numeric(v$Hora)
 
 ####### tambien se trasforma las fechas a años, para asi saber cuantos terremotos hay a medida que pasa el tiempo
-v$Date <- as.numeric(substring(v$Date,first = 7))
-table(v$Date)
+v$Fecha <- as.numeric(substring(v$Fecha,first = 7))
 
 
 #terremotos en cantidad segun el tiempo
+#grafico 1----
+
 v |> 
-  filter(tipos=="Earthquake") |> 
-  ggplot(aes(x=Date))+
-  geom_bar(color = "#79d0cc", size = 1) 
+  filter(Tipo=="Earthquake") |> 
+  ggplot(aes(x=Fecha))+
+  geom_bar(fill = "#79d0cc", size = 1) +
+  labs(title = "Cantidad de terremotos en el mundo por año",
+       subtitle = "período entre 1965 y 2016",
+       y ="Cantidad",
+       x = "Años")+
+  scale_x_continuous(breaks = seq(1965, 2016, by = 5)) 
+#se puede apreciar que el 2010 fue el año con mas terremotos de grado mayor o igual a 5,5
+#una respuesta para este fenomenos es que los sismos registrados corresponden a replicas originadas por
+# el terremoto del 27 de febrero
 
-#a medida que pasa el tiempo han subido la cantidad de terremotos
 
 
-  
+#grafico 2----
+v |> 
+  filter(Tipo=="Earthquake", País=="Chile") |> 
+  ggplot(aes(x=Fecha))+
+  geom_bar(fill = "#79d0cc", size = 1)+ 
+labs(title = "Cantidad de terremotos que ocurren en Chile a medida que pasa el tiempo",
+     subtitle = "período entre 1965 y 2016",
+     y ="Cantidad",
+     x = "Años")+
+  scale_x_continuous(breaks = seq(1965, 2016, by = 5))
+#nuevamente hubo mas terremotos en el 2010 debido a las replicas del 27f
 
 
+v <- cbind(v,rep(1,length(v$Fecha)))
+rep(1,length(v$Fecha))
+
+names(v)[8]="y"
+v <- v[,c(-8,-9)]
 #cantidad de terremotos con magnitud mayor a 8 durante el tiempo
+#grafico3----
+#terremotos de magnitud mayor a 8 entre 1965 y 2016
 v |> 
-  filter(tipos=="Earthquake", Magnitude>8) |> 
-  ggplot(aes(x=Date, y=Magnitude))+
-  geom_point(color = "Black", size = 2) 
+ filter(tipos=="Earthquake", Magnitud>8) |> 
+  ggplot(aes(x=Fecha, y=y, size = Magnitud))+
+  geom_point(shape = 21, colour = "black", fill = "white",stroke = 1, aes(size=Magnitud)) +
+  labs(title = "Terremotos de magnitud mayor a 8 en todo el mundo",
+       subtitle = "período entre 1965 y 2016",
+       x = "Años")+
+  geom_hline(yintercept = 1) + # agrego una línea
+  labs(y = NULL) + # elimino el nombre del eje
+  theme(axis.text.y = element_blank(), #elimino los números del eje
+        axis.ticks.y = element_blank())+# elimino las marcas donde van los números
+  theme_bw()+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 
-#como dato curioso entre 1971 hasta 1989 no hubieron terremotos con magnitud mayor a 8
+
+# ver los años en que ocurrio entre 1970 y 1990, decir que entre esos años no hubieron de mayor a 8
 
 
 
 
+#grafico4----
+v |> 
+  filter(Tipo=="Earthquake") |> 
+  ggplot(aes(Magnitud)) +
+  geom_histogram()+
+  labs(title = "Número de sismos en el mundo según la magnitud",
+       subtitle = "período entre 1965 y 2016", y="Cantidad")
 
+
+#grafico 5----
 # cantidad de ocurrencias de terremotos segun la hora
 v |> 
-  filter(tipos=="Earthquake") |> 
-  ggplot(aes(x=Time))+
-  geom_bar(color = "green") 
-
+  filter(Tipo=="Earthquake") |> 
+  ggplot(aes(x=Hora))+
+  geom_bar(color="black",fill="#FF7F50")+
+  theme_bw()+
+  labs(title = "Número de sismos en el mundo según la hora en que se origina",
+       subtitle = "período entre 1965 y 2016", y="Cantidad", x= "Hora (0-24)")
+  
 #se puede apreciar que no existe una hora especifica en la que sucedan mas terremotos
 
 
 
+table(v$Fecha)
 
-##### relacion entre tiempo y profundida
-v |> 
-  filter(tipos=="Earthquake") |> 
-  ggplot(aes(x=Depth, y=Magnitude))+
-  geom_point(color = "black", size=0.5) 
 
-#los terremotos por sobre 8 grados son ocasionados a menos de 100km de profundidad
+
 
 
 
@@ -132,19 +166,47 @@ v |>
 #install.packages("gt")
 
 library(gtsummary)
+library(gt)
+
+
+#encontrar maximos en magnitud por año
+
+mayores <- v[order(v$Magnitud, decreasing = TRUE),]
+mayores<- mayores[c(1,2,3,4,5),]
+mayores <- mayores[,c(1,6,7)]
+
+
+#tabla 5 mayores terremotos en el periodo estudiado
+gt(mayores)
+
+class(datos$Date)
+
+#tabla presentacion de datos
+
+nombres <- c("Fecha","Hora","Latitud","Longitud",
+          "Magnitud","País") 
+data.frame(Variables= nombres, 
+           Tipo = c("Fecha",
+                    "Tiempo",
+                    "Numérico",
+                    "Numérico",
+                    "Numérico",
+                    "Carácter"),
+           Descripción = c(
+             "Muestra la fecha en que ocurrio el sismo",
+             "Entrega la hora en que se originó un terremoto",
+             "Señala la latitud como cordenada geografica ",
+             "Señala la longitud como cordenada geografica",
+             "Es la magnitud en escala Richter de los terremotos",
+             "Corresponde al país en el que sucedio el sismo") ) |> 
+  gt() |> 
+  tab_header(title = "Descripción de variables") |> 
+  tab_source_note(source_note = "Fuente: Kaggle.com")
 
 
 
 
-
-
-
-
-
-
-
-
-
+ggsave("Figuras/Tabla_01.png", width = 10, height = 7)  
 
 
 

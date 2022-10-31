@@ -73,8 +73,936 @@ ul.task-list li input[type="checkbox"] {
 <p>Gracias al Centro De Sismología Internacional (CSI), organización mundial de sismología, que está encargada de registrar la magnitud, y la localización de los sismos. Se puede usar esta información recopilada, para hacer innovaciones que podrían prevenir catástrofes graves, por ejemplo, cambiando las estructuras de hormigón de los edificios y las casas de tal forma que sean estables ante las ondas sísmicas, o construir muros anti tsunami para romper las olas que se acercan a la costa.</p>
 <p>Dejando esto claro, en este informe se realizará un análisis estadístico descriptivo con datos recopilados por la CSI, con el objetivo de entregar información sobre los países con mayor actividad sísmica y también determinar un intervalo sobre la profundidad en que se originan los terremotos, esto con el fin de conocer cuales son los sectores que requieren innovaciones frente a los sismos.</p>
 <p>Este trabajo se divide en cuatro secciones, primero se dará información y un contexto sobre qué son los terremotos y por qué es importante hacer mediciones sobre este fenómeno . Luego se dará una explicación de cada variable en la base. En la tercera parte se entregarán gráficos, tablas y análisis sobre los terremotos. Y en último lugar, se realizará una conclusión en la que se dispondrán soluciones para evitar mayores desastres.</p>
-<p><br>
-</p>
+</section>
+<section id="descripción-de-variables" class="level2">
+<h2 class="anchored" data-anchor-id="descripción-de-variables">Descripción de variables</h2>
+<p>La siguiente tabla muestra las variables que se usarán en el analisis , a que tipo corresponden, y una breve definicion sobre la información que entregan.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="qwxnkntsca" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#qwxnkntsca) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#qwxnkntsca) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#qwxnkntsca) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#qwxnkntsca) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#qwxnkntsca) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#qwxnkntsca) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#qwxnkntsca) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#qwxnkntsca) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#qwxnkntsca) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#qwxnkntsca) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#qwxnkntsca) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#qwxnkntsca) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#qwxnkntsca) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#qwxnkntsca) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#qwxnkntsca) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#qwxnkntsca) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#qwxnkntsca) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#qwxnkntsca) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#qwxnkntsca) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#qwxnkntsca) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#qwxnkntsca) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#qwxnkntsca) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#qwxnkntsca) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#qwxnkntsca) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#qwxnkntsca) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#qwxnkntsca) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#qwxnkntsca) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#qwxnkntsca) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#qwxnkntsca) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#qwxnkntsca) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#qwxnkntsca) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#qwxnkntsca) .gt_left {
+  text-align: left;
+}
+
+:where(#qwxnkntsca) .gt_center {
+  text-align: center;
+}
+
+:where(#qwxnkntsca) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#qwxnkntsca) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#qwxnkntsca) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#qwxnkntsca) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#qwxnkntsca) .gt_super {
+  font-size: 65%;
+}
+
+:where(#qwxnkntsca) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#qwxnkntsca) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#qwxnkntsca) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#qwxnkntsca) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#qwxnkntsca) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#qwxnkntsca) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#qwxnkntsca) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Descripción de variables</td>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Variables</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Tipo</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Descripción</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Fecha</td>
+<td class="gt_row gt_left">Fecha</td>
+<td class="gt_row gt_left">Muestra la fecha en que ocurrio el sismo</td></tr>
+    <tr><td class="gt_row gt_left">Hora</td>
+<td class="gt_row gt_left">Tiempo</td>
+<td class="gt_row gt_left">Entrega la hora en que se originó un terremoto</td></tr>
+    <tr><td class="gt_row gt_left">Latitud</td>
+<td class="gt_row gt_left">Numérico</td>
+<td class="gt_row gt_left">Señala la latitud como cordenada geografica </td></tr>
+    <tr><td class="gt_row gt_left">Longitud</td>
+<td class="gt_row gt_left">Numérico</td>
+<td class="gt_row gt_left">Señala la longitud como cordenada geografica</td></tr>
+    <tr><td class="gt_row gt_left">Magnitud</td>
+<td class="gt_row gt_left">Numérico</td>
+<td class="gt_row gt_left">Es la magnitud en escala Richter de los terremotos</td></tr>
+    <tr><td class="gt_row gt_left">País</td>
+<td class="gt_row gt_left">Carácter</td>
+<td class="gt_row gt_left">Corresponde al país en el que sucedio el sismo</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="3">Fuente: Kaggle.com</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+</div>
+<p>Se puede apreciar una variedad de tipos de variables, pero en este trabajo se usaran en su mayoria las columnas que contienen la fechas, horas, magnitudes, y paises en la que ocurren los terremotos.</p>
+</section>
+<section id="graficos" class="level2">
+<h2 class="anchored" data-anchor-id="graficos">Graficos</h2>
+<p>Se quiere estudiar la cantidad de terremotos que hay dependiendo de ciertas variables, por el ejemplo el año, la magnitud, la hora, etc. Para ello se recopilaran graficos y tablas que entregaran información sobre la frecuencia de los sismos.</p>
+<div class="cell">
+
+</div>
+<p>El siguiente grafico entrega la cantidad de terremotos que hay en el mundo en cada año, desde 1965 hasta 2016</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 3 rows containing non-finite values (stat_count).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="introduccion_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Se puede apreciar, que el 2011 fue el año con la mayor cantidad de sismos en el planeta, esto se puede deber a las replicas que fueron originadas por el terremoto de 9,1 en Japón.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 rows containing non-finite values (stat_count).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="introduccion_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 3 rows containing non-finite values (stat_count).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="introduccion_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="yuxbhshxvj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#yuxbhshxvj) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#yuxbhshxvj) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#yuxbhshxvj) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#yuxbhshxvj) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#yuxbhshxvj) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#yuxbhshxvj) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#yuxbhshxvj) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#yuxbhshxvj) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#yuxbhshxvj) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#yuxbhshxvj) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#yuxbhshxvj) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#yuxbhshxvj) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#yuxbhshxvj) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#yuxbhshxvj) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#yuxbhshxvj) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#yuxbhshxvj) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#yuxbhshxvj) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#yuxbhshxvj) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#yuxbhshxvj) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#yuxbhshxvj) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#yuxbhshxvj) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#yuxbhshxvj) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#yuxbhshxvj) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#yuxbhshxvj) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#yuxbhshxvj) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#yuxbhshxvj) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#yuxbhshxvj) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#yuxbhshxvj) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#yuxbhshxvj) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#yuxbhshxvj) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#yuxbhshxvj) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#yuxbhshxvj) .gt_left {
+  text-align: left;
+}
+
+:where(#yuxbhshxvj) .gt_center {
+  text-align: center;
+}
+
+:where(#yuxbhshxvj) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#yuxbhshxvj) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#yuxbhshxvj) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#yuxbhshxvj) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#yuxbhshxvj) .gt_super {
+  font-size: 65%;
+}
+
+:where(#yuxbhshxvj) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#yuxbhshxvj) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#yuxbhshxvj) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#yuxbhshxvj) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#yuxbhshxvj) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#yuxbhshxvj) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#yuxbhshxvj) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Fecha</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Magnitud</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">País</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">2004</td>
+<td class="gt_row gt_right">9.1</td>
+<td class="gt_row gt_left">Indonesia</td></tr>
+    <tr><td class="gt_row gt_right">2011</td>
+<td class="gt_row gt_right">9.1</td>
+<td class="gt_row gt_left">Japón</td></tr>
+    <tr><td class="gt_row gt_right">2010</td>
+<td class="gt_row gt_right">8.8</td>
+<td class="gt_row gt_left">Chile</td></tr>
+    <tr><td class="gt_row gt_right">1965</td>
+<td class="gt_row gt_right">8.7</td>
+<td class="gt_row gt_left">Rusia</td></tr>
+    <tr><td class="gt_row gt_right">2005</td>
+<td class="gt_row gt_right">8.6</td>
+<td class="gt_row gt_left">Indonesia</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
 </section>
 
 </main>
