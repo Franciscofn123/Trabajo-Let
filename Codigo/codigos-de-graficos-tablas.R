@@ -14,6 +14,7 @@ library(ggthemes)
 library(plotrix)
 library(zoom)
 library(countrycode)
+library(gcookbook)
 datos <- NULL
 datos <- read_csv("/Users/joelf/OneDrive/Documentos/let/Trabajo-Let/Datos/terremotos_sin_procesar.csv", show_col_types = FALSE)
 
@@ -71,6 +72,7 @@ v$Fecha <- as.numeric(substring(v$Fecha,first = 7))
 
 #terremotos en cantidad segun el tiempo
 #grafico 1----
+table(v$Fecha)
 
 v |> 
   filter(Tipo=="Earthquake") |> 
@@ -80,7 +82,9 @@ v |>
        subtitle = "período entre 1965 y 2016",
        y ="Cantidad",
        x = "Años")+
-  scale_x_continuous(breaks = seq(1965, 2016, by = 5)) 
+  scale_x_continuous(breaks = seq(1965, 2016, by = 5))+
+  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "Black",size=2)
+
 #se puede apreciar que el 2010 fue el año con mas terremotos de grado mayor o igual a 5,5
 #una respuesta para este fenomenos es que los sismos registrados corresponden a replicas originadas por
 # el terremoto del 27 de febrero
@@ -98,7 +102,8 @@ labs(title = "Cantidad de terremotos que ocurren en Chile a medida que pasa el t
      subtitle = "período entre 1965 y 2016",
      y ="Cantidad",
      x = "Años")+
-  scale_x_continuous(breaks = seq(1965, 2016, by = 5))
+  scale_x_continuous(breaks = seq(1965, 2016, by = 5))+
+  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "Black",size=2)
 #nuevamente hubo mas terremotos en el 2010 debido a las replicas del 27f
 
 
