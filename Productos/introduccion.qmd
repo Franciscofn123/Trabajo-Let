@@ -11,7 +11,7 @@ Los terremotos son liberaciones de energía que se emiten a la superficie de la 
 
 Por esta razón, algunas de las preguntas más comunes que se plantean son: A pesar de que los terremotos no se pueden predecir, ¿existe algún patron en la frecuencia de este fenómeno?, ¿cuántos sismos ocurren aproximadamente en un año?, ¿hay una hora en donde se originan más temblores? y si es esto correcto, ¿cuál es?
 
-Gracias al Centro De Sismología Internacional (CSI), la organización mundial, que se encarga de registrar la magnitud, y la localización de los sismos. Es por ello que con la labor de esta organización se puede usar esta información recopilada, para hacer innovaciones que podrían prevenir catástrofes graves, por ejemplo, cambiando las estructuras de hormigón de los edificios y las casas de tal forma que sean estables ante las ondas sísmicas, o construir muros anti tsunami para romper las olas que se acercan a la costa.
+Gracias a la labor del Centro De Sismología Internacional (CSI), la organización mundial, que se encarga de registrar la magnitud, y la localización de los sismos. Se puede usar esta información recopilada, para hacer innovaciones que podrían prevenir catástrofes graves. Por ejemplo, cambiando las estructuras de hormigón de los edificios y las casas de tal forma que sean estables ante las ondas sísmicas, o construir muros anti tsunami para romper las olas que se acercan a la costa.
 
 Dejando esto claro, en este informe se realizará un análisis estadístico descriptivo con datos recopilados por la CSI, con el objetivo de entregar información sobre los países con mayor actividad sísmica y también determinar un intervalo sobre la profundidad en que se originan los terremotos. Se espera así conocer cuáles son los países que requieren innovaciones frente a los sismos.
 
@@ -28,8 +28,8 @@ library(gt)
 nombres <- c("Fecha","Hora","Latitud","Longitud",
           "Magnitud","País") 
 data.frame(Variables= nombres, 
-           Tipo = c("Fecha",
-                    "Tiempo",
+           Tipo = c("Numérico",
+                    "Numérico",
                     "Numérico",
                     "Numérico",
                     "Numérico",
@@ -46,7 +46,7 @@ data.frame(Variables= nombres,
   tab_source_note(source_note = "Fuente: Kaggle.com")
 ```
 
-Se puede apreciar varios tipos de variables, pero en este trabajo se usarán en su mayoria las columnas que contienen la fechas, horas, magnitudes, y países en las que ocurrieron los terremotos. Para este estudio, solo se considerarán los terremotos con magnitud mayor a 5,5.
+En este trabajo se usarán en su mayoria las columnas que contienen la fechas, horas, magnitudes, y países en las que ocurrieron los terremotos. Para este estudio, solo se considerarán los terremotos con magnitud mayor a 5,5.
 
 ## Gráficos
 
@@ -119,7 +119,7 @@ v$Fecha[3379] <- 1975
 
 ```
 
-Uno de los objetivos de este trabajo es conocer el número de sismos que hay en el periodo de un año, para así conocer el rango de repetición de estos fenomenos. Con este propósito se adjunta el siguiente gráfico que entrega la cantidad de terremotos que hay en el mundo en cada año, desde 1965 hasta 2016:
+Uno de los objetivos de este trabajo es conocer el número de sismos que hay en el periodo de un año, para así conocer el rango de repetición de estos fenómenos. Con este propósito se adjunta el siguiente gráfico que entrega la cantidad de terremotos que hay en el mundo en cada año, desde 1965 hasta 2016:
 
 ```{r}
 #| echo: false
@@ -170,6 +170,8 @@ v |>
   labs(title = "Número de sismos en el mundo según la hora en que se origina",
        subtitle = "período entre 1965 y 2016", y="Cantidad", x= "Hora (0-24)")
 ```
+
+Tabla que muestra los cinco terremotos de mayor magnitud entre 1965 y 2016.
 
 ```{r}
 #| echo: false
