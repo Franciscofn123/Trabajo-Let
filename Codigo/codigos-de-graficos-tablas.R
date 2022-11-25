@@ -15,6 +15,9 @@ library(plotrix)
 library(zoom)
 library(countrycode)
 library(gcookbook)
+remove.packages("vctrs")
+install.packages("vctrs")
+library(vctrs)
 datos <- NULL
 datos <- read_csv("/Users/joelf/OneDrive/Documentos/let/Trabajo-Let/Datos/terremotos_sin_procesar.csv", show_col_types = FALSE)
 

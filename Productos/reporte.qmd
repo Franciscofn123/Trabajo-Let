@@ -30,7 +30,7 @@ Existe una variable llamada "tipo", en la que indica el origen del terremoto, en
 
 Por otro lado, se realiza una geolocalizacion inversa, en la que se usan la longitud y la latitud como coordenadas geograficas para poder conseguir el país en donde ocasiona un sismo.
 
-En adición, en la variable fecha, se usaran solo los años, y en la variable hora, se usara solamente en la cual sucede un sismo
+En adición, en la variable fecha, se usaran solo los años, y en la variable hora, se usara solamente en la cual sucede un sismo.
 
 ## Descripción de variables
 
@@ -69,8 +69,6 @@ Se quiere estudiar la cantidad de terremotos que hay en el mundo y su relación 
 ```{r}
 #| echo: false
 #| output: false
-
-
 library(gtsummary)
 library(gt)
 library(readxl)
@@ -87,25 +85,13 @@ library(ggthemes)
 library(plotrix)
 library(zoom)
 library(countrycode)
-
 datos <- read_csv("https://raw.githubusercontent.com/Franciscofn123/Trabajo-Let/main/Datos/terremotos_sin_procesar.csv", show_col_types = FALSE)
-
 v <- data.frame(datos$Date,datos$Time,datos$Latitude,datos$Longitude,datos$Type,datos$Magnitude)
-
-
-
-
 q <- read_csv("/Users/joelf/OneDrive/Documentos/let/Trabajo-Let/Datos/País.csv",show_col_types = FALSE) 
-
 v <- cbind(v,q)
-
-
-
 #cambiar nombre de variables
 names(v)= c("Fecha", "Hora","Latitud","Longitud", "Tipo", "Magnitud", "País")
-
 #Traducir nombres de paises----
-
 v[v=="Fr. S. Antarctic Lands"] <- "Tierras Antárticas Francesas"
 v[v=="S. Sudan"] <- "South Sudan"
 v[v=="Somaliland"] <- "Somalia"
@@ -114,26 +100,18 @@ v <- v |>
                                origin = "country.name",
                                destination = "cldr.name.es"),
          .after = País) 
-
-
 ######## se dejan las variables que se quieren ocupar, tiempo, latitud, longitud, magnitud, tipo y pais de origen
-
-
-
 ####### se trasforma hora de terremoto a hora, para saber a que hora fue (como funcion parte entera)
 v$Hora <- format(as.POSIXct(v$Hora), format = "%H")
 v$Hora <- as.numeric(v$Hora)
-
 ####### tambien se trasforma las fechas a años, para asi saber cuantos terremotos hay a medida que pasa el tiempo
 v$Fecha <- as.numeric(substring(v$Fecha,first = 7))
-
 v$Fecha[20651] <- 2011
 v$Fecha[7513] <- 1985 
 v$Fecha[3379] <- 1975
-
 ```
 
-Uno de los objetivos de este trabajo es calcular el número de sismos que hay en el periodo de un año, para así conocer el rango de repetición de estos fenómenos. Con este propósito el siguiente gráfico visualiza la cantidad de terremotos que ha habido en el mundo en cada año, desde 1965 hasta 2016:
+Uno de los objetivos de este trabajo es conocer el número de sismos que hay en el periodo de un año, para así conocer el rango de repetición de estos fenómenos. Con este propósito se adjunta el siguiente gráfico que entrega la cantidad de terremotos que hay en el mundo en cada año, desde 1965 hasta 2016:
 
 ```{r}
 #| echo: false
@@ -148,7 +126,6 @@ v |>
        x = "Años")+
   scale_x_continuous(breaks = seq(1965, 2016, by = 5))+
     geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "Black",size=1.8)
-
 ```
 
 Se puede apreciar, que el 2011 fue el año con la mayor cantidad de sismos en el planeta, con un total de 713 terremotos. Esto se puede deber a las réplicas que fueron originadas por el terremoto de magnitud 9,1 en Japón, el día 11 de marzo. Por el contrario, el año con la menor cantidad de sismos fue en 1966 con la suma de 233 temblores, esto podría explicarse a que en esa época no existía aún la tecnología necesaria para recopilar todos los terremotos que ocurrían en el mundo.
@@ -167,7 +144,6 @@ labs(title = "Cantidad de terremotos que ocurren por año en Chile ",
      x = "Años")+
   scale_x_continuous(breaks = seq(1965, 2016, by = 5))+
       geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "Black",size=1.8)
-
 ```
 
 Se puede apreciar que el periodo con mayor cantidad fue el 2010, esto se podria explicar a que son las replicas producidas por el terremoto de magnitud 8,8 el dia 27 de febrero.
@@ -179,14 +155,11 @@ Por otro lado, se quiere conocer como se distribuye la cantidad de sismos que ha
 v <- v[-7513,]
 v <- v[-3379,]
 v <- v[-20649,]
-
-
-
 v |> 
   filter(Tipo=="Earthquake") |> 
   ggplot(aes(x=Hora))+
   geom_bar(color="black",fill="#FF7F50")+
-  scale_x_continuous(breaks = seq(0, 24, by = 6))+
+  theme_bw()+
   labs(title = "Número de sismos en el mundo según la hora en que se origina",
        subtitle = "período entre 1965 y 2016", y="Cantidad", x= "Hora (0-24)")
 ```
@@ -199,15 +172,10 @@ Por ultimo, se desea conocer cuales han sido los sismo con mayor magnitud y su l
 #| echo: false
 library(gtsummary)
 library(gt)
-
-
 #encontrar maximos en magnitud por año
-
 mayores <- v[order(v$Magnitud, decreasing = TRUE),]
 mayores<- mayores[c(1,2,3,4,5),]
 mayores <- mayores[,c(1,6,7)]
-
-
 #tabla 5 mayores terremotos en el periodo estudiado
 gt(mayores)
 ```
