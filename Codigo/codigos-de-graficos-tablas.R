@@ -15,8 +15,6 @@ library(plotrix)
 library(zoom)
 library(countrycode)
 library(gcookbook)
-remove.packages("vctrs")
-install.packages("vctrs")
 library(vctrs)
 datos <- NULL
 datos <- read_csv("/Users/joelf/OneDrive/Documentos/let/Trabajo-Let/Datos/terremotos_sin_procesar.csv", show_col_types = FALSE)
@@ -76,17 +74,23 @@ v$Fecha <- as.numeric(substring(v$Fecha,first = 7))
 #terremotos en cantidad segun el tiempo
 #grafico 1----
 table(v$Fecha)
+colores <- rep("#79d0cc",2016-1965+1)
+colores[2] <- "red"
+colores[47] <- "red"
 
 v |> 
   filter(Tipo=="Earthquake") |> 
   ggplot(aes(x=Fecha))+
-  geom_bar(fill = "#79d0cc", size =1) +
+  geom_bar(fill = colores, size =1 ) +
   labs(title = "Cantidad de terremotos en el mundo por año",
        subtitle = "período entre 1965 y 2016",
        y ="Cantidad",
        x = "Años")+
+  geom_text(x=1966, y=241, label="233",size=3)+
+  geom_text(x=2011, y=721, label="713",size=3)+
+  
   scale_x_continuous(breaks = seq(1965, 2016, by = 5))+
-  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "Black",size=2)
+  theme_bw()
 
 #se puede apreciar que el 2010 fue el año con mas terremotos de grado mayor o igual a 5,5
 #una respuesta para este fenomenos es que los sismos registrados corresponden a replicas originadas por
@@ -97,16 +101,23 @@ v$Fecha[20651] <- 2011
 v$Fecha[7513] <- 1985 
 v$Fecha[3379] <- 1975
 #grafico 2----
+
+colo <- rep("#79d0cc",2016-1965+1)
+colo[13] <- "red"
+colo[46] <- "red"
+
 v |> 
   filter(Tipo=="Earthquake", País=="Chile") |> 
   ggplot(aes(x=Fecha))+
-  geom_bar(fill = "#79d0cc", size = 1)+ 
+  geom_bar(fill = colo, size =1 ) + 
 labs(title = "Cantidad de terremotos que ocurren en Chile a medida que pasa el tiempo",
      subtitle = "período entre 1965 y 2016",
      y ="Cantidad",
      x = "Años")+
+  geom_text(x=1977, y=3, label="2",size=3)+
+  geom_text(x=2010, y=95, label="94",size=3)+
   scale_x_continuous(breaks = seq(1965, 2016, by = 5))+
-  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "Black",size=2)
+  theme_bw()
 #nuevamente hubo mas terremotos en el 2010 debido a las replicas del 27f
 
 

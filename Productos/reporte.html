@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Francisco Fernández">
+
+<title>Terremotos a nivel mundial desde 1965-2016</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="reporte_files/libs/clipboard/clipboard.min.js"></script>
+<script src="reporte_files/libs/quarto-html/quarto.js"></script>
+<script src="reporte_files/libs/quarto-html/popper.min.js"></script>
+<script src="reporte_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="reporte_files/libs/quarto-html/anchor.min.js"></script>
+<link href="reporte_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="reporte_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="reporte_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="reporte_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="reporte_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Terremotos a nivel mundial desde 1965-2016</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor</div>
+    <div class="quarto-title-meta-contents">
+             <p>Francisco Fernández </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>Los terremotos son una latente amenaza en el mundo, que genera grandes daños. Por eso es importante conocer su comportanmiento, por lo que se hizo un analisis descriptivo de una base de datos que contiene los terremotos a nivel mundial con magnitud mayor 5.5 que ocurrieron entre 1965 a 2016. Se encontró que no existe un patrón en la hora en que se originan los sismos. En un futuro, se podria obtener una variable que indica si un terremoto generó un terremoto o no, para asi saber la cantidad de sismo que generan tsunamis.</p>
+</section>
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>Los terremotos son liberaciones de energía que se emiten a la superficie de la tierra, debido al choque o roce de las placas tectónicas, y puede provocar daños de gran medida los cuales afectan directamente a ciudades y zonas rurales. Además, origina otros desastres naturales, tales como derrumbes o tsunamis. Como todos saben, estos desastres son una latente amenaza para las personas.</p>
+<p>Por esta razón, algunas de las preguntas más comunes que se plantean son: a pesar de que los terremotos no se pueden predecir, ¿existe algún patrón en la frecuencia de este fenómeno?, ¿cuántos sismos ocurren aproximadamente en un año?, ¿hay una hora en donde se originan más temblores? y si es esto correcto, ¿cuál es?</p>
+<p>Gracias al Centro de Sismología Internacional (CSI), organización mundial que se encarga de registrar la magnitud y la localización de los sismos, es posible acceder a la información recopilada, para hacer innovaciones que podrían prevenir catástrofes graves, o bien, para entender el comportamiento de este fernómeno.</p>
+<p>Dejando esto claro, en este informe se realizará un análisis estadístico descriptivo con datos recopilados por el CSI, con el objetivo de entregar información sobre los países con mayor actividad sísmica y también determinar si es que existe una hora en donde se originan más terremotos.</p>
+<p>Este trabajo se divide en cuatro secciones. primero se dará información y contexto sobre qué son los terremotos y por qué es importante hacer mediciones sobre estos fenómeno . A continuación se presentarán los datos que se utilizaran como base para el anaslisis posterior. En la tercera parte se realizará un analisis descriptivo de estos datos a traves del uso de graficos y tablas. Y en último lugar, se realizará una conclusión en la que se identificarán posibles patrones en la magnitud, frecuencia y hora de los terremotos.</p>
+</section>
+<section id="contexto-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="contexto-de-datos">Contexto de datos</h2>
+<p>como se dijo anteriormente, los terremotos son un desastre natural que genera grandes catastrofes alrededor del mundo y tambien genera otros desastres naturales tales como tsunamis o derrumbes. este fenomeno se puede medir en escala richter, que asigna un número para cuantificar la energía que libera un terremoto. si este escalar es mayor o igual a 8.5, se dice que ha ocurrido un megaterremoto.</p>
+<p>Si bien los terremotos pueden ocurrir en cualquier parte del mundo, existe una region llamada el anillo de fuego, que es un sector en donde ocurre el 90% de los terremotos en el mundo. esto se ubica alrederor de las costas del oceano pacifico</p>
+<p>La base se consiguio con el siguiente <a href="https://www.kaggle.com/datasets/usgs/earthquake-database">enlace:</a> donde se encuentran datos sobre los terremotos de magnitud mayor a 5,5 que han acontecido desde 1965 a 2016</p>
+<p>Existe una variable llamada “tipo”, en la que indica el origen del terremoto, en este trabajo se usa unicamente por origen de contacto entre placas tectonicas.</p>
+<p>Por otro lado, se realiza una geolocalizacion inversa, en la que se usan la longitud y la latitud como coordenadas geograficas para poder conseguir el país en donde ocasiona un sismo.</p>
+<p>En adición, en la variable fecha, se usaran solo los años, y en la variable hora, se usara solamente la hora en la cual sucede un sismo y no los minutos ni los segundos.</p>
+</section>
+<section id="descripción-de-variables" class="level2">
+<h2 class="anchored" data-anchor-id="descripción-de-variables">Descripción de variables</h2>
+<p>La siguiente tabla muestra las variables que se usarán en el análisis despues de haber limpiado la base de datos original, tambien se especifica a que tipo corresponden, y una breve definición sobre la información que entregan.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="pgogjgcjoy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#pgogjgcjoy) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#pgogjgcjoy) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#pgogjgcjoy) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#pgogjgcjoy) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#pgogjgcjoy) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#pgogjgcjoy) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#pgogjgcjoy) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#pgogjgcjoy) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#pgogjgcjoy) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#pgogjgcjoy) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#pgogjgcjoy) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#pgogjgcjoy) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#pgogjgcjoy) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#pgogjgcjoy) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#pgogjgcjoy) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#pgogjgcjoy) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#pgogjgcjoy) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#pgogjgcjoy) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#pgogjgcjoy) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#pgogjgcjoy) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#pgogjgcjoy) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#pgogjgcjoy) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#pgogjgcjoy) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#pgogjgcjoy) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#pgogjgcjoy) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#pgogjgcjoy) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#pgogjgcjoy) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#pgogjgcjoy) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#pgogjgcjoy) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#pgogjgcjoy) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#pgogjgcjoy) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#pgogjgcjoy) .gt_left {
+  text-align: left;
+}
+
+:where(#pgogjgcjoy) .gt_center {
+  text-align: center;
+}
+
+:where(#pgogjgcjoy) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#pgogjgcjoy) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#pgogjgcjoy) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#pgogjgcjoy) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#pgogjgcjoy) .gt_super {
+  font-size: 65%;
+}
+
+:where(#pgogjgcjoy) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#pgogjgcjoy) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#pgogjgcjoy) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#pgogjgcjoy) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#pgogjgcjoy) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#pgogjgcjoy) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#pgogjgcjoy) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Descripción de variables</td>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Variables</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Tipo</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Descripción</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Fecha</td>
+<td class="gt_row gt_left">Numérico</td>
+<td class="gt_row gt_left">Muestra la fecha en que ocurrió el sismo</td></tr>
+    <tr><td class="gt_row gt_left">Hora</td>
+<td class="gt_row gt_left">Numérico</td>
+<td class="gt_row gt_left">Entrega la hora en que se originó un terremoto</td></tr>
+    <tr><td class="gt_row gt_left">Latitud</td>
+<td class="gt_row gt_left">Numérico</td>
+<td class="gt_row gt_left">Señala la latitud como coordenada geográfica </td></tr>
+    <tr><td class="gt_row gt_left">Longitud</td>
+<td class="gt_row gt_left">Numérico</td>
+<td class="gt_row gt_left">Señala la longitud como coordenada geográfica</td></tr>
+    <tr><td class="gt_row gt_left">Magnitud</td>
+<td class="gt_row gt_left">Numérico</td>
+<td class="gt_row gt_left">Es la magnitud en escala Richter de los terremotos</td></tr>
+    <tr><td class="gt_row gt_left">País</td>
+<td class="gt_row gt_left">Carácter</td>
+<td class="gt_row gt_left">Corresponde al país en el que sucedió el sismo</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="3">Fuente: Kaggle.com</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+</div>
+<p>En este trabajo se usarán en su mayoria las columnas que contienen la fechas, horas, magnitudes, y países en las que ocurrieron los terremotos.</p>
+</section>
+<section id="resultados" class="level2">
+<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<p>Se quiere estudiar la cantidad de terremotos que hay en el mundo y su relación con variables tales como año, magnitud, hora, etc. esto con el fin de entender o estudiar el comportamiento de los sismos. Para ello se adjuntarán gráficos y tablas que entregarán información sobre la frecuencia de los sismos de acuerdo a diferentes variables.</p>
+<div class="cell">
+
+</div>
+<p>Uno de los objetivos de este trabajo es conocer el número de sismos que hay en el periodo de un año, para así conocer el rango de repetición de estos fenómenos. Con este propósito se adjunta el siguiente gráfico que entrega la cantidad de terremotos que hay en el mundo en cada año, desde 1965 hasta 2016:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="reporte_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Se puede apreciar, que el 2011 fue el año con la mayor cantidad de sismos en el planeta, con un total de 713 terremotos. Esto se puede deber a las réplicas que fueron originadas por el terremoto de magnitud 9,1 en Japón, el día 11 de marzo. Por el contrario, el año con la menor cantidad de sismos fue en 1966 con la suma de 233 temblores, esto podría explicarse a que en esa época no existía aún la tecnología necesaria para recopilar todos los terremotos que ocurrían en el mundo.</p>
+<p>Ahora bien, se quiere dar un enfoque nacional, por lo que el siguiente grafico muestra la cantidad de terremotos que ocurren por año.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="reporte_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Se puede apreciar que el periodo con mayor cantidad fue el 2010, esto se podria explicar a que son las replicas producidas por el terremoto de magnitud 8,8 el dia 27 de febrero.</p>
+<p>Por otro lado, se quiere conocer como se distribuye la cantidad de sismos que hay, dependiendo de la hora en que ocurre. para ello, se realiza el siguiente grafico</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="reporte_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>se puede ver que relativamente ocurren el mismo numero de sismos en todas las horas del dia. gracias a este comportamiento, se puede evidenciar que los terremotos son impredecibles, pues, se originan la misma cantidad aproximadamente de terremotos en todas las horas del dia.</p>
+<p>Por ultimo, se desea conocer cuales han sido los sismo con mayor magnitud y su localizacion dentro del intervalo de tiempo estudiado. para ello, se realiza la siguiente tabla que muestra los cinco terremotos de mayor magnitud entre 1965 y 2016.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="thkcumwfhl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#thkcumwfhl) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#thkcumwfhl) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#thkcumwfhl) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#thkcumwfhl) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#thkcumwfhl) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#thkcumwfhl) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#thkcumwfhl) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#thkcumwfhl) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#thkcumwfhl) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#thkcumwfhl) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#thkcumwfhl) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#thkcumwfhl) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#thkcumwfhl) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#thkcumwfhl) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#thkcumwfhl) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#thkcumwfhl) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#thkcumwfhl) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#thkcumwfhl) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#thkcumwfhl) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#thkcumwfhl) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#thkcumwfhl) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#thkcumwfhl) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#thkcumwfhl) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#thkcumwfhl) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#thkcumwfhl) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#thkcumwfhl) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#thkcumwfhl) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#thkcumwfhl) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#thkcumwfhl) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#thkcumwfhl) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#thkcumwfhl) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#thkcumwfhl) .gt_left {
+  text-align: left;
+}
+
+:where(#thkcumwfhl) .gt_center {
+  text-align: center;
+}
+
+:where(#thkcumwfhl) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#thkcumwfhl) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#thkcumwfhl) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#thkcumwfhl) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#thkcumwfhl) .gt_super {
+  font-size: 65%;
+}
+
+:where(#thkcumwfhl) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#thkcumwfhl) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#thkcumwfhl) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#thkcumwfhl) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#thkcumwfhl) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#thkcumwfhl) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#thkcumwfhl) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Fecha</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Magnitud</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">País</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">2004</td>
+<td class="gt_row gt_right">9.1</td>
+<td class="gt_row gt_left">Indonesia</td></tr>
+    <tr><td class="gt_row gt_right">2011</td>
+<td class="gt_row gt_right">9.1</td>
+<td class="gt_row gt_left">Japón</td></tr>
+    <tr><td class="gt_row gt_right">2010</td>
+<td class="gt_row gt_right">8.8</td>
+<td class="gt_row gt_left">Chile</td></tr>
+    <tr><td class="gt_row gt_right">1965</td>
+<td class="gt_row gt_right">8.7</td>
+<td class="gt_row gt_left">Rusia</td></tr>
+    <tr><td class="gt_row gt_right">2005</td>
+<td class="gt_row gt_right">8.6</td>
+<td class="gt_row gt_left">Indonesia</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<p>se puede notar que estos sismos corresponden a la categoria de megaterremotos, por lo que posiblemente generaron grandes daños, tambien se puede decir que todos los paises que aparecen en la tabla pertenecen al anillos de fuego, lo cual tiene sentido porque es el sector donde se originan la mayoria de los terremotos que hay en el mundo.</p>
+</section>
+<section id="conclusión" class="level2">
+<h2 class="anchored" data-anchor-id="conclusión">Conclusión</h2>
+<p>como se vio anteriormente, no existe un tendencia clara en la cantidad de terremotos que hay por año, ni en la hora en la que se originan, ademas, lo megaterremotos que han ocurrido en el intervalo estudiado sucedieron en paises pertenecientes al anillo de fuego.</p>
+<p>A partir de los datos presentados, se puede afirmar que no existe un patron claro en el numero de terremotos que hay a medida que pasa el tiempo, ni tampoco en la hora del dia en que se originan, por lo que esto expone que los sismos son impredecibles.</p>
+<p>considerando lo anterior, esta latente amenaza puede ocurrir en cualquier momento, por lo que seria de gran importancia saber la cantidad de terremotos que desencadenan otros desastres naturales, como por ejemplo tsunamis. se sugiere la recopilacion de una variable que contenga informacion sobre si un sismo genera o no, un tsunami, esto con el fin de conocer la tasa en la que los terremotos ocasionan tsunamis</p>
+</section>
+<section id="links-de-la-info-sacada" class="level2">
+<h2 class="anchored" data-anchor-id="links-de-la-info-sacada">links de la info sacada</h2>
+<p>https://cnnespanol.cnn.com/2022/09/23/cinturon-fuego-pacifico-explainer-orix/</p>
+<p>https://www.gob.mx/cenapred/articulos/en-el-cinturon-de-fuego-del-pacifico-la-actividad-sigue-siendo-normal</p>
+<p>https://www.muyinteresante.es/ciencia/preguntas-respuestas/como-funciona-la-escala-de-richter-501481801518</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

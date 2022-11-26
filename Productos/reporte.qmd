@@ -24,17 +24,21 @@ Este trabajo se divide en cuatro secciones. primero se dará información y cont
 
 ## Contexto de datos
 
+como se dijo anteriormente, los terremotos son un desastre natural que genera grandes catastrofes alrededor del mundo y tambien genera otros desastres naturales tales como tsunamis o derrumbes. este fenomeno se puede medir en escala richter, que asigna un número para cuantificar la energía que libera un terremoto. si este escalar es mayor o igual a 8.5, se dice que ha ocurrido un megaterremoto.
+
+Si bien los terremotos pueden ocurrir en cualquier parte del mundo, existe una region llamada el anillo de fuego, que es un sector en donde ocurre el 90% de los terremotos en el mundo. esto se ubica alrederor de las costas del oceano pacifico
+
 La base se consiguio con el siguiente [enlace:](https://www.kaggle.com/datasets/usgs/earthquake-database) donde se encuentran datos sobre los terremotos de magnitud mayor a 5,5 que han acontecido desde 1965 a 2016
 
 Existe una variable llamada "tipo", en la que indica el origen del terremoto, en este trabajo se usa unicamente por origen de contacto entre placas tectonicas.
 
 Por otro lado, se realiza una geolocalizacion inversa, en la que se usan la longitud y la latitud como coordenadas geograficas para poder conseguir el país en donde ocasiona un sismo.
 
-En adición, en la variable fecha, se usaran solo los años, y en la variable hora, se usara solamente en la cual sucede un sismo.
+En adición, en la variable fecha, se usaran solo los años, y en la variable hora, se usara solamente la hora en la cual sucede un sismo y no los minutos ni los segundos.
 
 ## Descripción de variables
 
-La siguiente tabla muestra las variables que se usarán en el análisis , a que tipo corresponden, y una breve definición sobre la información que entregan.
+La siguiente tabla muestra las variables que se usarán en el análisis despues de haber limpiado la base de datos original, tambien se especifica a que tipo corresponden, y una breve definición sobre la información que entregan.
 
 ```{r}
 #| echo: false
@@ -60,11 +64,11 @@ data.frame(Variables= nombres,
   tab_source_note(source_note = "Fuente: Kaggle.com")
 ```
 
-En este trabajo se usarán en su mayoria las columnas que contienen la fechas, horas, magnitudes, y países en las que ocurrieron los terremotos. Para este estudio, solo se considerarán los terremotos con magnitud mayor a 5,5 que ocurrieron desde 1965 a 2016.
+En este trabajo se usarán en su mayoria las columnas que contienen la fechas, horas, magnitudes, y países en las que ocurrieron los terremotos.
 
 ## Resultados
 
-Se quiere estudiar la cantidad de terremotos que hay en el mundo y su relación con variables tales como año, magnitud, hora, etc. Para ello se adjuntarán gráficos y tablas que entregarán información sobre la frecuencia de los sismos.
+Se quiere estudiar la cantidad de terremotos que hay en el mundo y su relación con variables tales como año, magnitud, hora, etc. esto con el fin de entender o estudiar el comportamiento de los sismos. Para ello se adjuntarán gráficos y tablas que entregarán información sobre la frecuencia de los sismos de acuerdo a diferentes variables.
 
 ```{r}
 #| echo: false
@@ -116,16 +120,23 @@ Uno de los objetivos de este trabajo es conocer el número de sismos que hay en 
 ```{r}
 #| echo: false
 library(ggplot2)
+colores <- rep("#79d0cc",2016-1965+1)
+colores[2] <- "red"
+colores[47] <- "red"
+
 v |> 
   filter(Tipo=="Earthquake") |> 
   ggplot(aes(x=Fecha))+
-  geom_bar(fill = "#79d0cc", size = 1) +
+  geom_bar(fill = colores, linewidth =1 ) +
   labs(title = "Cantidad de terremotos en el mundo por año",
        subtitle = "período entre 1965 y 2016",
        y ="Cantidad",
        x = "Años")+
+  geom_text(x=1966, y=243, label="233",size=3)+
+  geom_text(x=2011, y=723, label="713",size=3)+
+  
   scale_x_continuous(breaks = seq(1965, 2016, by = 5))+
-    geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "Black",size=1.8)
+  theme_bw()
 ```
 
 Se puede apreciar, que el 2011 fue el año con la mayor cantidad de sismos en el planeta, con un total de 713 terremotos. Esto se puede deber a las réplicas que fueron originadas por el terremoto de magnitud 9,1 en Japón, el día 11 de marzo. Por el contrario, el año con la menor cantidad de sismos fue en 1966 con la suma de 233 temblores, esto podría explicarse a que en esa época no existía aún la tecnología necesaria para recopilar todos los terremotos que ocurrían en el mundo.
@@ -134,16 +145,21 @@ Ahora bien, se quiere dar un enfoque nacional, por lo que el siguiente grafico m
 
 ```{r}
 #| echo: false
+colo <- rep("#79d0cc",2016-1965+1)
+colo[13] <- "red"
+colo[46] <- "red"
 v |> 
   filter(Tipo=="Earthquake", País=="Chile") |> 
   ggplot(aes(x=Fecha))+
-  geom_bar(fill = "#79d0cc", size = 1)+ 
-labs(title = "Cantidad de terremotos que ocurren por año en Chile ",
+  geom_bar(fill = colo, linewidth =1 ) + 
+labs(title = "Cantidad de terremotos que ocurren en Chile a medida que pasa el tiempo",
      subtitle = "período entre 1965 y 2016",
      y ="Cantidad",
      x = "Años")+
+  geom_text(x=1977, y=5, label="2",size=3)+
+  geom_text(x=2010, y=96, label="94",size=3)+
   scale_x_continuous(breaks = seq(1965, 2016, by = 5))+
-      geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "Black",size=1.8)
+  theme_bw()
 ```
 
 Se puede apreciar que el periodo con mayor cantidad fue el 2010, esto se podria explicar a que son las replicas producidas por el terremoto de magnitud 8,8 el dia 27 de febrero.
@@ -158,10 +174,11 @@ v <- v[-20649,]
 v |> 
   filter(Tipo=="Earthquake") |> 
   ggplot(aes(x=Hora))+
-  geom_bar(color="black",fill="#FF7F50")+
+  geom_bar(color="black",fill="#00CDCD")+
   theme_bw()+
   labs(title = "Número de sismos en el mundo según la hora en que se origina",
-       subtitle = "período entre 1965 y 2016", y="Cantidad", x= "Hora (0-24)")
+       subtitle = "período entre 1965 y 2016", y="Cantidad", x= "Hora (0-24)")+
+  scale_x_continuous(breaks = seq(0, 24, by = 6))
 ```
 
 se puede ver que relativamente ocurren el mismo numero de sismos en todas las horas del dia. gracias a este comportamiento, se puede evidenciar que los terremotos son impredecibles, pues, se originan la misma cantidad aproximadamente de terremotos en todas las horas del dia.
@@ -180,4 +197,20 @@ mayores <- mayores[,c(1,6,7)]
 gt(mayores)
 ```
 
+se puede notar que estos sismos corresponden a la categoria de megaterremotos, por lo que posiblemente generaron grandes daños, tambien se puede decir que todos los paises que aparecen en la tabla pertenecen al anillos de fuego, lo cual tiene sentido porque es el sector donde se originan la mayoria de los terremotos que hay en el mundo.
+
 ## Conclusión
+
+como se vio anteriormente, no existe un tendencia clara en la cantidad de terremotos que hay por año, ni en la hora en la que se originan, ademas, lo megaterremotos que han ocurrido en el intervalo estudiado sucedieron en paises pertenecientes al anillo de fuego.
+
+A partir de los datos presentados, se puede afirmar que no existe un patron claro en el numero de terremotos que hay a medida que pasa el tiempo, ni tampoco en la hora del dia en que se originan, por lo que esto expone que los sismos son impredecibles.
+
+considerando lo anterior, esta latente amenaza puede ocurrir en cualquier momento, por lo que seria de gran importancia saber la cantidad de terremotos que desencadenan otros desastres naturales, como por ejemplo tsunamis. se sugiere la recopilacion de una variable que contenga informacion sobre si un sismo genera o no, un tsunami, esto con el fin de conocer la tasa en la que los terremotos ocasionan tsunamis
+
+## links de la info sacada
+
+https://cnnespanol.cnn.com/2022/09/23/cinturon-fuego-pacifico-explainer-orix/
+
+https://www.gob.mx/cenapred/articulos/en-el-cinturon-de-fuego-del-pacifico-la-actividad-sigue-siendo-normal
+
+https://www.muyinteresante.es/ciencia/preguntas-respuestas/como-funciona-la-escala-de-richter-501481801518
