@@ -26,9 +26,9 @@ Este trabajo se divide en cuatro secciones. primero se dará información y cont
 
 Como se dijo anteriormente, los terremotos son desastres naturales que generan grandes catastrofes alrededor del mundo . Este fenómeno se puede medir en escala Richter, que asigna un número para cuantificar la energía que libera un terremoto. Si este escalar es mayor o igual a 8.5, se dice que ha ocurrido un megaterremoto.
 
-Si bien los terremotos pueden ocurrir en cualquier parte del mundo, existe una región llamada el anillo de fuego, que es un sector en donde ocurre el 90% de los terremotos en el mundo. este se ubica alrederor de las costas del oceano pacifico
+Si bien los terremotos pueden ocurrir en cualquier parte del mundo, existe una región llamada el anillo de fuego, que es un sector en donde ocurre el 90% de los terremotos en el mundo. este se ubica alrederor de las costas del oceano pacifico.
 
-La base se consiguió con el siguiente [enlace:](https://www.kaggle.com/datasets/usgs/earthquake-database) donde se encuentran datos sobre los terremotos de magnitud mayor a 5,5 que han acontecido desde 1965 a 2016
+La base se consiguió con el siguiente [enlace:](https://www.kaggle.com/datasets/usgs/earthquake-database) donde se encuentran datos sobre los terremotos de magnitud mayor a 5,5 que han acontecido desde 1965 a 2016.
 
 Existe una variable llamada "tipo", en la que indica el origen del terremoto , ya sea producido por una bomba nuclear, o por choque de las placas tectónicas, en este trabajo se usará unicamente por origen de contacto o roce entre las placas tectónicas.
 
@@ -139,7 +139,7 @@ v |>
   theme_bw()
 ```
 
-Se puede apreciar, que el 2011 fue el año con la mayor cantidad de sismos en el planeta, con un total de 713 terremotos. Esto se puede deber a las réplicas que fueron originadas por el terremoto de magnitud 9,1 en Japón, el día 11 de marzo. Por el contrario, el año con la menor cantidad de sismos fue en 1966 con la suma de 233 temblores. Una explicación posible a este bajo número es que en esa época no existía aún la tecnología necesaria para registrar todos los terremotos que ocurrían en el mundo. Por otro lado, no se ve una tendencia clara al aumento o disminución de terremotos por año
+Se puede apreciar, que el 2011 fue el año con la mayor cantidad de sismos en el planeta, con un total de 713 terremotos. Esto se puede deber a las réplicas que fueron originadas por el terremoto de magnitud 9,1 en Japón, el día 11 de marzo. Por el contrario, el año con la menor cantidad de sismos fue en 1966 con la suma de 233 temblores. Una explicación posible a este bajo número es que en esa época no existía aún la tecnología necesaria para registrar todos los terremotos que ocurrían en el mundo. Por otro lado, no se ve una tendencia clara al aumento o disminución de terremotos por año.
 
 Ahora bien, se quiere dar un enfoque nacional, por lo que el siguiente gráfico muestra la cantidad de terremotos que ocurren por año en Chile.
 
@@ -181,7 +181,7 @@ v |>
   scale_x_continuous(breaks = seq(0, 24, by = 6))
 ```
 
-Se puede ver que aproximadamente, se originan el mismo número de sismos en todas las horas del día. gracias a este comportamiento se puede evidenciar que los terremotos son impredecibles,
+Se puede ver que aproximadamente, se originan el mismo número de sismos en todas las horas del día. gracias a este comportamiento se puede evidenciar que los terremotos son impredecibles.
 
 Por último, se desea conocer cuales han sido los sismos con mayor magnitud y su localización, dentro del intervalo de tiempo estudiado, para ello, se realiza la siguiente tabla que muestra los cinco terremotos de mayor magnitud entre 1965 y 2016.
 
@@ -205,7 +205,7 @@ Como se vió anteriormente, no existe un tendencia clara en la cantidad de terre
 
 A partir de los datos presentados, se puede afirmar que no existe un patrón claro en el número de terremotos que hay a medida que pasa el tiempo, ni tampoco en la hora del día en que se originan, por lo que esto visualiza claramente que los sismos sean impredecibles.
 
-Considerando lo anterior, esta latente amenaza puede ocurrir en cualquier momento, por lo que sería de gran importancia saber la cantidad de terremotos que desencadenan otros desastres naturales, como por ejemplo tsunamis. Se sugiere la creación de una variable que contenga información sobre si un sismo genera o no, un tsunami, esto con el fin de conocer la cantidad de terremotos que desencadenan este fenómeno
+Considerando lo anterior, esta latente amenaza puede ocurrir en cualquier momento, por lo que sería de gran importancia saber la cantidad de terremotos que desencadenan otros desastres naturales, como por ejemplo tsunamis. Se sugiere la creación de una variable que contenga información sobre si un sismo genera o no, un tsunami, esto con el fin de conocer la cantidad de terremotos que desencadenan este fenómeno.
 
 ## Referencias
 
