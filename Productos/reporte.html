@@ -68,24 +68,24 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="resumen-ejecutivo" class="level2">
 <h2 class="anchored" data-anchor-id="resumen-ejecutivo">Resumen ejecutivo</h2>
-<p>Los terremotos son una latente amenaza en el mundo, que genera grandes daños. Por eso es importante conocer su comportanmiento, por lo que se hizo un analisis descriptivo de una base de datos que contiene los terremotos a nivel mundial con magnitud mayor 5.5 que ocurrieron entre 1965 a 2016. Se encontró que no existe un patrón en el tiempo en que se originan los sismos. En un futuro, se podria obtener una variable que indica si un terremoto generó un terremoto o no, para asi saber la cantidad de sismo que generan tsunamis.</p>
+<p>Los terremotos son una latente amenaza en el mundo, que genera grandes daños. Por eso es importante conocer su comportamiento, por lo que se hizo un analisis descriptivo de una base de datos que contiene los terremotos a nivel mundial con magnitud mayor 5.5 que ocurrieron entre 1965 a 2016. Se encontró que no existe un patrón claro del tiempo en que se originan los sismos. En un futuro, se podria obtener una variable que indica si un terremoto generó un tsunami o no, para asi saber la cantidad de sismos que desencadenan estos fenomenos.</p>
 </section>
 <section id="introducción" class="level2">
 <h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
 <p>Los terremotos son liberaciones de energía que se emiten a la superficie de la tierra, debido al choque o roce de las placas tectónicas, y puede provocar daños de gran medida los cuales afectan directamente a ciudades y zonas rurales. Además, origina otros desastres naturales, tales como derrumbes o tsunamis. Como todos saben, estos desastres son una latente amenaza para las personas.</p>
-<p>Por esta razón, algunas de las preguntas más comunes que se plantean son: a pesar de que los terremotos no se pueden predecir, ¿existe algún patrón en la frecuencia de este fenómeno?, ¿cuántos sismos ocurren aproximadamente en un año?, ¿hay una hora en donde se originan más temblores? y si es esto correcto, ¿cuál es?</p>
+<p>Por esta razón, algunas de las preguntas más comunes que se plantean son: a pesar de que los terremotos no se pueden predecir, ¿existe algún patrón en la frecuencia de este fenómeno?, ¿cuántos sismos ocurren aproximadamente en un año?,¿en que parte del mundo ocurren los terremotos más fuertes?, ¿hay una hora en donde se originan más temblores? y si es esto correcto, ¿cuál es?</p>
 <p>Gracias a la labor Centro de Sismología Internacional (CSI), la organización mundial que se encarga de registrar la magnitud y la localización de los sismos, es posible acceder a la información recopilada, para hacer innovaciones que podrían prevenir catástrofes graves, o bien, para entender el comportamiento de este fernómeno.</p>
 <p>Dejando esto claro, en este informe se realizará un análisis estadístico descriptivo con datos recopilados por el CSI, con el objetivo de entregar información sobre los países con mayor actividad sísmica y también determinar si es que existe una hora en donde se originan más terremotos.</p>
 <p>Este trabajo se divide en cuatro secciones. primero se dará información y contexto sobre qué son los terremotos y por qué es importante hacer mediciones sobre estos fenómeno . A continuación se presentarán los datos que se utilizaran como base para el analisis posterior. En la tercera parte se hará un analisis descriptivo de estos datos a traves del uso de graficos y tablas. Y en último lugar, se realizará una conclusión en la que se identificarán posibles patrones en la magnitud, frecuencia y hora de los terremotos.</p>
 </section>
 <section id="contexto-de-datos" class="level2">
 <h2 class="anchored" data-anchor-id="contexto-de-datos">Contexto de datos</h2>
-<p>Como se dijo anteriormente, los terremotos son un desastre natural que genera grandes catastrofes alrededor del mundo y tambien genera otros desastres naturales tales como tsunamis o derrumbes. este fenomeno se puede medir en escala richter, que asigna un número para cuantificar la energía que libera un terremoto. si este escalar es mayor o igual a 8.5, se dice que ha ocurrido un megaterremoto.</p>
-<p>Si bien los terremotos pueden ocurrir en cualquier parte del mundo, existe una region llamada el anillo de fuego, que es un sector en donde ocurre el 90% de los terremotos en el mundo. esto se ubica alrederor de las costas del oceano pacifico</p>
+<p>Como se dijo anteriormente, los terremotos son desastres naturales que generan grandes catastrofes alrededor del mundo . Este fenomeno se puede medir en escala Richter, que asigna un número para cuantificar la energía que libera un terremoto. Si este escalar es mayor o igual a 8.5, se dice que ha ocurrido un megaterremoto.</p>
+<p>Si bien los terremotos pueden ocurrir en cualquier parte del mundo, existe una region llamada el anillo de fuego, que es un sector en donde ocurre el 90% de los terremotos en el mundo. este se ubica alrederor de las costas del oceano pacifico</p>
 <p>La base se consiguio con el siguiente <a href="https://www.kaggle.com/datasets/usgs/earthquake-database">enlace:</a> donde se encuentran datos sobre los terremotos de magnitud mayor a 5,5 que han acontecido desde 1965 a 2016</p>
-<p>Existe una variable llamada “tipo”, en la que indica el origen del terremoto, en este trabajo se usa unicamente por origen de contacto entre placas tectonicas.</p>
-<p>Por otro lado, se realiza una geolocalizacion inversa, en la que se usan la longitud y la latitud como coordenadas geograficas para poder conseguir el país en donde ocasiona un sismo.</p>
-<p>En adición, en la variable fecha, se usaran solo los años, y en la variable hora, se usara solamente la hora en la cual sucede un sismo y no los minutos ni los segundos.</p>
+<p>Existe una variable llamada “tipo”, en la que indica el origen del terremoto , ya sea producido por una bomba nuclear, o por choque de las placas tectoncas, en este trabajo se usará unicamente por origen de contacto o roce entre las placas tectonicas.</p>
+<p>Por otro lado, se realiza una geolocalizacion inversa, en la que se usan la longitud y la latitud como coordenadas geograficas para conseguir el país en donde ocasiona un sismo.</p>
+<p>Por ultimo, la variable fecha, se usaran solo los años, y en la variable hora, se usaran solamente la hora en la cual sucede un sismo y no los minutos ni los segundos.</p>
 </section>
 <section id="descripción-de-variables" class="level2">
 <h2 class="anchored" data-anchor-id="descripción-de-variables">Descripción de variables</h2>
@@ -93,12 +93,12 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="orhstqfvnh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="gfmlhinixl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-:where(#orhstqfvnh) .gt_table {
+:where(#gfmlhinixl) .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -123,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-:where(#orhstqfvnh) .gt_heading {
+:where(#gfmlhinixl) .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-:where(#orhstqfvnh) .gt_title {
+:where(#gfmlhinixl) .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -147,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-:where(#orhstqfvnh) .gt_subtitle {
+:where(#gfmlhinixl) .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -159,13 +159,13 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-:where(#orhstqfvnh) .gt_bottom_border {
+:where(#gfmlhinixl) .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-:where(#orhstqfvnh) .gt_col_headings {
+:where(#gfmlhinixl) .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -180,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-:where(#orhstqfvnh) .gt_col_heading {
+:where(#gfmlhinixl) .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -200,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-:where(#orhstqfvnh) .gt_column_spanner_outer {
+:where(#gfmlhinixl) .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -212,15 +212,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-:where(#orhstqfvnh) .gt_column_spanner_outer:first-child {
+:where(#gfmlhinixl) .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-:where(#orhstqfvnh) .gt_column_spanner_outer:last-child {
+:where(#gfmlhinixl) .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-:where(#orhstqfvnh) .gt_column_spanner {
+:where(#gfmlhinixl) .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -232,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-:where(#orhstqfvnh) .gt_group_heading {
+:where(#gfmlhinixl) .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -257,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-:where(#orhstqfvnh) .gt_empty_group_heading {
+:where(#gfmlhinixl) .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -272,15 +272,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-:where(#orhstqfvnh) .gt_from_md > :first-child {
+:where(#gfmlhinixl) .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-:where(#orhstqfvnh) .gt_from_md > :last-child {
+:where(#gfmlhinixl) .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-:where(#orhstqfvnh) .gt_row {
+:where(#gfmlhinixl) .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -299,7 +299,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-:where(#orhstqfvnh) .gt_stub {
+:where(#gfmlhinixl) .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -312,7 +312,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-:where(#orhstqfvnh) .gt_stub_row_group {
+:where(#gfmlhinixl) .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -326,11 +326,11 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-:where(#orhstqfvnh) .gt_row_group_first td {
+:where(#gfmlhinixl) .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-:where(#orhstqfvnh) .gt_summary_row {
+:where(#gfmlhinixl) .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -340,16 +340,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-:where(#orhstqfvnh) .gt_first_summary_row {
+:where(#gfmlhinixl) .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-:where(#orhstqfvnh) .gt_first_summary_row.thick {
+:where(#gfmlhinixl) .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-:where(#orhstqfvnh) .gt_last_summary_row {
+:where(#gfmlhinixl) .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -359,7 +359,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-:where(#orhstqfvnh) .gt_grand_summary_row {
+:where(#gfmlhinixl) .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -369,7 +369,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-:where(#orhstqfvnh) .gt_first_grand_summary_row {
+:where(#gfmlhinixl) .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -379,11 +379,11 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-:where(#orhstqfvnh) .gt_striped {
+:where(#gfmlhinixl) .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-:where(#orhstqfvnh) .gt_table_body {
+:where(#gfmlhinixl) .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -392,7 +392,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-:where(#orhstqfvnh) .gt_footnotes {
+:where(#gfmlhinixl) .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -406,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-:where(#orhstqfvnh) .gt_footnote {
+:where(#gfmlhinixl) .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -415,7 +415,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-:where(#orhstqfvnh) .gt_sourcenotes {
+:where(#gfmlhinixl) .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -429,7 +429,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-:where(#orhstqfvnh) .gt_sourcenote {
+:where(#gfmlhinixl) .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -437,64 +437,64 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-:where(#orhstqfvnh) .gt_left {
+:where(#gfmlhinixl) .gt_left {
   text-align: left;
 }
 
-:where(#orhstqfvnh) .gt_center {
+:where(#gfmlhinixl) .gt_center {
   text-align: center;
 }
 
-:where(#orhstqfvnh) .gt_right {
+:where(#gfmlhinixl) .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-:where(#orhstqfvnh) .gt_font_normal {
+:where(#gfmlhinixl) .gt_font_normal {
   font-weight: normal;
 }
 
-:where(#orhstqfvnh) .gt_font_bold {
+:where(#gfmlhinixl) .gt_font_bold {
   font-weight: bold;
 }
 
-:where(#orhstqfvnh) .gt_font_italic {
+:where(#gfmlhinixl) .gt_font_italic {
   font-style: italic;
 }
 
-:where(#orhstqfvnh) .gt_super {
+:where(#gfmlhinixl) .gt_super {
   font-size: 65%;
 }
 
-:where(#orhstqfvnh) .gt_footnote_marks {
+:where(#gfmlhinixl) .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-:where(#orhstqfvnh) .gt_asterisk {
+:where(#gfmlhinixl) .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-:where(#orhstqfvnh) .gt_indent_1 {
+:where(#gfmlhinixl) .gt_indent_1 {
   text-indent: 5px;
 }
 
-:where(#orhstqfvnh) .gt_indent_2 {
+:where(#gfmlhinixl) .gt_indent_2 {
   text-indent: 10px;
 }
 
-:where(#orhstqfvnh) .gt_indent_3 {
+:where(#gfmlhinixl) .gt_indent_3 {
   text-indent: 15px;
 }
 
-:where(#orhstqfvnh) .gt_indent_4 {
+:where(#gfmlhinixl) .gt_indent_4 {
   text-indent: 20px;
 }
 
-:where(#orhstqfvnh) .gt_indent_5 {
+:where(#gfmlhinixl) .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -546,7 +546,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="resultados" class="level2">
 <h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
-<p>Se quiere estudiar la cantidad de terremotos que hay en el mundo y su relación con variables tales como año, magnitud, hora, etc. esto con el fin de entender o estudiar el comportamiento de los sismos. Para ello se adjuntarán gráficos y tablas que entregarán información sobre la frecuencia de los sismos de acuerdo a diferentes variables.</p>
+<p>Se quiere estudiar la cantidad de terremotos que hay en el mundo y su relación con variables tales como año, hora, etc. esto con el fin de entender o estudiar el comportamiento de los sismos. Para ello se adjuntarán gráficos y tablas que entregarán información sobre la frecuencia de los sismos de acuerdo a diferentes variables.</p>
 <div class="cell">
 
 </div>
@@ -563,24 +563,24 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="reporte_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Se puede apreciar que el periodo con mayor cantidad fue el 2010, esto se podria explicar a que son las replicas producidas por el terremoto de magnitud 8,8 el dia 27 de febrero. por el contrario, el año con menor cantidad de sismos fue 1977, con un total de 2 terremotos que tambien se puede deber a que no existia la tecnologia suficente para registrar todos los sismos que ocurrian. De la misma forma, no se obtiene un patron claro en la subida o bajada del número de terremotos que suceden en un año.</p>
-<p>Por otro lado, se quiere conocer como se distribuye la cantidad de sismos que hay, dependiendo de la hora en que ocurren en el dia. para ello, se realiza el siguiente grafico</p>
+<p>Se puede apreciar que el periodo con mayor cantidad fue el 2010, esto se podria explicar a que son las replicas producidas por el terremoto de magnitud 8,8 el dia 27 de febrero. por el contrario, el año con menor cantidad de sismos fue 1977, con un total de 2 temblores, que tambien se puede deber a que no existia la tecnologia suficente para registrar todos los sismos que ocurrian. De la misma forma, no se obtiene un patrón claro en la subida o bajada del número de terremotos que suceden en un año.</p>
+<p>Por otro lado, se quiere conocer como se distribuye la cantidad de sismos que hay, dependiendo de la hora en que ocurren durante el dia. para ello, se realiza el siguiente grafico que entrega la cantidad de terremotos, de acuerdo a la hora en que se originan.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="reporte_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Se puede ver que aproximadamente, se originan el mismo número de sismos en todas las horas del día. gracias a este comportamiento se puede evidenciar que los terremotos son impredecibles,</p>
-<p>Por ultimo, se desea conocer cuales han sido los sismo con mayor magnitud y su localizacion. dentro del intervalo de tiempo estudiado. para ello, se realiza la siguiente tabla que muestra los cinco terremotos de mayor magnitud entre 1965 y 2016.</p>
+<p>Por ultimo, se desea conocer cuales han sido los sismos con mayor magnitud y su localizacion, dentro del intervalo de tiempo estudiado, para ello, se realiza la siguiente tabla que muestra los cinco terremotos de mayor magnitud entre 1965 y 2016.</p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="oeddusaysq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="dnbqcibvky" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-:where(#oeddusaysq) .gt_table {
+:where(#dnbqcibvky) .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -605,7 +605,7 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-:where(#oeddusaysq) .gt_heading {
+:where(#dnbqcibvky) .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -617,7 +617,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-:where(#oeddusaysq) .gt_title {
+:where(#dnbqcibvky) .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -629,7 +629,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-:where(#oeddusaysq) .gt_subtitle {
+:where(#dnbqcibvky) .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -641,13 +641,13 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-:where(#oeddusaysq) .gt_bottom_border {
+:where(#dnbqcibvky) .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-:where(#oeddusaysq) .gt_col_headings {
+:where(#dnbqcibvky) .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -662,7 +662,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-:where(#oeddusaysq) .gt_col_heading {
+:where(#dnbqcibvky) .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -682,7 +682,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-:where(#oeddusaysq) .gt_column_spanner_outer {
+:where(#dnbqcibvky) .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -694,15 +694,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-:where(#oeddusaysq) .gt_column_spanner_outer:first-child {
+:where(#dnbqcibvky) .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-:where(#oeddusaysq) .gt_column_spanner_outer:last-child {
+:where(#dnbqcibvky) .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-:where(#oeddusaysq) .gt_column_spanner {
+:where(#dnbqcibvky) .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -714,7 +714,7 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-:where(#oeddusaysq) .gt_group_heading {
+:where(#dnbqcibvky) .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -739,7 +739,7 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-:where(#oeddusaysq) .gt_empty_group_heading {
+:where(#dnbqcibvky) .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -754,15 +754,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-:where(#oeddusaysq) .gt_from_md > :first-child {
+:where(#dnbqcibvky) .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-:where(#oeddusaysq) .gt_from_md > :last-child {
+:where(#dnbqcibvky) .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-:where(#oeddusaysq) .gt_row {
+:where(#dnbqcibvky) .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -781,7 +781,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-:where(#oeddusaysq) .gt_stub {
+:where(#dnbqcibvky) .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -794,7 +794,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-:where(#oeddusaysq) .gt_stub_row_group {
+:where(#dnbqcibvky) .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -808,11 +808,11 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-:where(#oeddusaysq) .gt_row_group_first td {
+:where(#dnbqcibvky) .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-:where(#oeddusaysq) .gt_summary_row {
+:where(#dnbqcibvky) .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -822,16 +822,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-:where(#oeddusaysq) .gt_first_summary_row {
+:where(#dnbqcibvky) .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-:where(#oeddusaysq) .gt_first_summary_row.thick {
+:where(#dnbqcibvky) .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-:where(#oeddusaysq) .gt_last_summary_row {
+:where(#dnbqcibvky) .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -841,7 +841,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-:where(#oeddusaysq) .gt_grand_summary_row {
+:where(#dnbqcibvky) .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -851,7 +851,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-:where(#oeddusaysq) .gt_first_grand_summary_row {
+:where(#dnbqcibvky) .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -861,11 +861,11 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-:where(#oeddusaysq) .gt_striped {
+:where(#dnbqcibvky) .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-:where(#oeddusaysq) .gt_table_body {
+:where(#dnbqcibvky) .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -874,7 +874,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-:where(#oeddusaysq) .gt_footnotes {
+:where(#dnbqcibvky) .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -888,7 +888,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-:where(#oeddusaysq) .gt_footnote {
+:where(#dnbqcibvky) .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -897,7 +897,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-:where(#oeddusaysq) .gt_sourcenotes {
+:where(#dnbqcibvky) .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -911,7 +911,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-:where(#oeddusaysq) .gt_sourcenote {
+:where(#dnbqcibvky) .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -919,64 +919,64 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-:where(#oeddusaysq) .gt_left {
+:where(#dnbqcibvky) .gt_left {
   text-align: left;
 }
 
-:where(#oeddusaysq) .gt_center {
+:where(#dnbqcibvky) .gt_center {
   text-align: center;
 }
 
-:where(#oeddusaysq) .gt_right {
+:where(#dnbqcibvky) .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-:where(#oeddusaysq) .gt_font_normal {
+:where(#dnbqcibvky) .gt_font_normal {
   font-weight: normal;
 }
 
-:where(#oeddusaysq) .gt_font_bold {
+:where(#dnbqcibvky) .gt_font_bold {
   font-weight: bold;
 }
 
-:where(#oeddusaysq) .gt_font_italic {
+:where(#dnbqcibvky) .gt_font_italic {
   font-style: italic;
 }
 
-:where(#oeddusaysq) .gt_super {
+:where(#dnbqcibvky) .gt_super {
   font-size: 65%;
 }
 
-:where(#oeddusaysq) .gt_footnote_marks {
+:where(#dnbqcibvky) .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-:where(#oeddusaysq) .gt_asterisk {
+:where(#dnbqcibvky) .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-:where(#oeddusaysq) .gt_indent_1 {
+:where(#dnbqcibvky) .gt_indent_1 {
   text-indent: 5px;
 }
 
-:where(#oeddusaysq) .gt_indent_2 {
+:where(#dnbqcibvky) .gt_indent_2 {
   text-indent: 10px;
 }
 
-:where(#oeddusaysq) .gt_indent_3 {
+:where(#dnbqcibvky) .gt_indent_3 {
   text-indent: 15px;
 }
 
-:where(#oeddusaysq) .gt_indent_4 {
+:where(#dnbqcibvky) .gt_indent_4 {
   text-indent: 20px;
 }
 
-:where(#oeddusaysq) .gt_indent_5 {
+:where(#dnbqcibvky) .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1017,8 +1017,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="conclusión" class="level2">
 <h2 class="anchored" data-anchor-id="conclusión">Conclusión</h2>
 <p>Como se vio anteriormente, no existe un tendencia clara en la cantidad de terremotos que hay por año, ni en la hora en la que se originan, ademas, lo megaterremotos que han ocurrido en el intervalo estudiado sucedieron en paises pertenecientes al anillo de fuego.</p>
-<p>A partir de los datos presentados, se puede afirmar que no existe un patrón claro en el número de terremotos que hay a medida que pasa el tiempo, ni tampoco en la hora del dia en que se originan, por lo que esto visualiza que los sismos sean impredecibles.</p>
-<p>Considerando lo anterior, esta latente amenaza puede ocurrir en cualquier momento, por lo que seria de gran importancia saber la cantidad de terremotos que desencadenan otros desastres naturales, como por ejemplo tsunamis. Se sugiere la creación de una variable que contenga informacion sobre si un sismo genera o no, un tsunami, esto con el fin de conocer la tasa en la que los terremotos desencadena este fenómeno</p>
+<p>A partir de los datos presentados, se puede afirmar que no existe un patrón claro en el número de terremotos que hay a medida que pasa el tiempo, ni tampoco en la hora del dia en que se originan, por lo que esto visualiza claramente que los sismos sean impredecibles.</p>
+<p>Considerando lo anterior, esta latente amenaza puede ocurrir en cualquier momento, por lo que seria de gran importancia saber la cantidad de terremotos que desencadenan otros desastres naturales, como por ejemplo tsunamis. Se sugiere la creación de una variable que contenga información sobre si un sismo genera o no, un tsunami, esto con el fin de conocer la cantidad de terremotos que desencadenan este fenómeno</p>
 </section>
 <section id="referencias" class="level2">
 <h2 class="anchored" data-anchor-id="referencias">Referencias</h2>
