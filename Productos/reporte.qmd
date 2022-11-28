@@ -16,17 +16,17 @@ Los terremotos son liberaciones de energía que se emiten a la superficie de la 
 
 Por esta razón, algunas de las preguntas más comunes que se plantean son: a pesar de que los terremotos no se pueden predecir, ¿existe algún patrón en la frecuencia de este fenómeno?, ¿cuántos sismos ocurren aproximadamente en un año?,¿en qué parte del mundo ocurren los terremotos más fuertes?, ¿hay una hora en dónde se originan más temblores? y si es esto correcto, ¿cuál es?
 
-Gracias a la labor Centro de Sismología Internacional (CSI), la organización mundial que se encarga de registrar la magnitud y la localización de los sismos, es posible acceder a la información recopilada, para hacer innovaciones que podrían prevenir catástrofes graves, o bien, para entender el comportamiento de este fernómeno.
+Gracias a la labor del Centro de Sismología Internacional (CSI), la organización mundial que se encarga de registrar la magnitud y la localización de los sismos, es posible acceder a la información recopilada, para hacer innovaciones que podrían prevenir catástrofes graves, o bien, para entender el comportamiento de este fenómeno.
 
 Dejando esto claro, en este informe se realizará un análisis estadístico descriptivo con datos recopilados por el CSI, con el objetivo de entregar información sobre los países con mayor actividad sísmica y también determinar si existe una hora en donde se originan más terremotos.
 
-Este trabajo se divide en cuatro secciones. primero se dará información y contexto sobre qué son los terremotos y por qué es importante hacer mediciones sobre estos fenómenos . A continuación se presentarán los datos que se utilizarán como base para el análisis posterior. En la tercera parte se hará un análisis descriptivo de estos datos a traves del uso de gráficos y tablas. Y en último lugar, se realizará una conclusión en la que se identificarán posibles patrones en la magnitud, frecuencia y hora de los terremotos.
+Este trabajo se divide en cuatro secciones. Primero se dará información y contexto sobre qué son los terremotos y por qué es importante hacer mediciones sobre estos fenómenos . A continuación se presentarán los datos que se utilizarán como base para el análisis posterior. En la tercera parte se hará un análisis descriptivo de estos datos a traves del uso de gráficos y tablas. Y en último lugar, se realizará una conclusión en la que se identificarán posibles patrones en la magnitud, frecuencia y hora de los terremotos.
 
 ## Contexto de datos
 
 Como se dijo anteriormente, los terremotos son desastres naturales que generan grandes catastrofes alrededor del mundo . Este fenómeno se puede medir en escala Richter, que asigna un número para cuantificar la energía que libera un terremoto. Si este escalar es mayor o igual a 8.5, se dice que ha ocurrido un megaterremoto.
 
-Si bien los terremotos pueden ocurrir en cualquier parte del mundo, existe una región llamada el anillo de fuego, que es un sector en donde ocurre el 90% de los terremotos en el mundo. este se ubica alrederor de las costas del oceano pacifico.
+Si bien los terremotos pueden ocurrir en cualquier parte del mundo, existe una región llamada el anillo de fuego, que es un sector en donde ocurre el 90% de los terremotos en el mundo. Este se ubica alrededor de las costas del oceano pacífico.
 
 La base se consiguió con el siguiente [enlace:](https://www.kaggle.com/datasets/usgs/earthquake-database) donde se encuentran datos sobre los terremotos de magnitud mayor a 5,5 que han acontecido desde 1965 a 2016.
 
@@ -34,7 +34,7 @@ Existe una variable llamada "tipo", en la que indica el origen del terremoto , y
 
 Por otro lado, se realiza una geolocalización inversa, en la que se usan la longitud y la latitud como coordenadas geográficas para conseguir el país en donde ocasiona un sismo.
 
-Por último, la variable fecha, se usarán solo los años, y en la variable hora, se usarán solamente la hora en la cual sucede un sismo y no los minutos ni los segundos.
+Por último, la variable "Fecha", se usarán solo los años, y en la variable "Hora", se utilizarán solamente la hora en la cual sucede un sismo y no los minutos ni los segundos.
 
 ## Descripción de variables
 
@@ -68,7 +68,7 @@ En este trabajo se usarán en su mayoría las columnas que contienen la fechas, 
 
 ## Resultados
 
-Se quiere estudiar la cantidad de terremotos que hay en el mundo y su relación con variables tales como año, hora, etc. esto con el fin de entender o estudiar el comportamiento de los sismos. Para ello se adjuntarán gráficos y tablas que entregarán información sobre la frecuencia de los sismos de acuerdo a diferentes variables.
+Se quiere estudiar la cantidad de terremotos que hay en el mundo y su relación con variables tales como año, hora, etc. Esto con el fin de entender o estudiar el comportamiento de los sismos. Para ello se adjuntarán gráficos y tablas que entregarán información sobre la frecuencia de los sismos de acuerdo a diferentes variables.
 
 ```{r}
 #| echo: false
@@ -139,7 +139,7 @@ v |>
   theme_bw()
 ```
 
-Se puede apreciar, que el 2011 fue el año con la mayor cantidad de sismos en el planeta, con un total de 713 terremotos. Esto se puede deber a las réplicas que fueron originadas por el terremoto de magnitud 9,1 en Japón, el día 11 de marzo. Por el contrario, el año con la menor cantidad de sismos fue en 1966 con la suma de 233 temblores. Una explicación posible a este bajo número es que en esa época no existía aún la tecnología necesaria para registrar todos los terremotos que ocurrían en el mundo. Por otro lado, no se ve una tendencia clara al aumento o disminución de terremotos por año.
+Se puede apreciar, que el 2011 fue el año con la mayor cantidad de sismos en el planeta, con un total de 713 terremotos. Esto se puede ser producto de las réplicas que fueron originadas por el terremoto de magnitud 9,1 en Japón, el día 11 de marzo de ese año. Por el contrario, el año con la menor cantidad de sismos fue en 1966 con la suma de 233 temblores. Una explicación posible a este bajo número es que en esa época no existía aún la tecnología necesaria para registrar todos los terremotos que ocurrían en el mundo. Por otro lado, no se ve una tendencia clara al aumento o disminución de terremotos por año.
 
 Ahora bien, se quiere dar un enfoque nacional, por lo que el siguiente gráfico muestra la cantidad de terremotos que ocurren por año en Chile.
 
@@ -162,9 +162,9 @@ labs(title = "Cantidad de terremotos que ocurren en Chile a medida que pasa el t
   theme_bw()
 ```
 
-Se puede apreciar que el período con mayor cantidad fue el 2010, esto se podría explicar que son las replicas producidas por el terremoto de magnitud 8,8 el día 27 de febrero. por el contrario, el año con menor cantidad de sismos fue 1977, con un total de 2 temblores, que también se puede deber a que no existía la tecnología suficente para registrar todos los sismos que ocurrian. De la misma forma, no se obtiene un patrón claro en la subida o bajada del número de terremotos que suceden en un año.
+Se puede apreciar que el período con mayor cantidad fue el 2010, esto es una consecuencia de las réplicas producidas por el terremoto de magnitud 8,8 el día 27 de febrero. Por el contrario, el año con menor cantidad de sismos fue 1977, con un total de 2 temblores, que también se puede deber a que no existía la tecnología suficiente para registrar todos los sismos que ocurrían. De la misma forma, no se obtiene un patrón claro en la subida o bajada del número de terremotos que suceden en un año.
 
-Por otro lado, se quiere conocer como se distribuye la cantidad de sismos que hay, dependiendo de la hora en que ocurren durante el día. para ello, se realiza el siguiente gráfico que entrega la cantidad de terremotos, de acuerdo a la hora en que se originan.
+Por otro lado, se quiere conocer como se distribuye la cantidad de sismos que ocurre, dependiendo de la hora en que se manifiestan durante el día. Para ello, se realiza el siguiente gráfico que entrega la cantidad de terremotos, de acuerdo a la hora en que se originan.
 
 ```{r}
 #| echo: false
@@ -181,9 +181,9 @@ v |>
   scale_x_continuous(breaks = seq(0, 24, by = 6))
 ```
 
-Se puede ver que aproximadamente, se originan el mismo número de sismos en todas las horas del día. gracias a este comportamiento se puede evidenciar que los terremotos son impredecibles.
+Se puede ver que aproximadamente, se originan el mismo número de sismos en todas las horas del día. Gracias a este comportamiento se puede evidenciar que los terremotos son impredecibles.
 
-Por último, se desea conocer cuales han sido los sismos con mayor magnitud y su localización, dentro del intervalo de tiempo estudiado, para ello, se realiza la siguiente tabla que muestra los cinco terremotos de mayor magnitud entre 1965 y 2016.
+Por último, se desea conocer cuáles han sido los sismos con mayor magnitud y su localización, dentro del intervalo de tiempo estudiado, para ello, se realiza la siguiente tabla que muestra los cinco terremotos de mayor magnitud entre 1965 y 2016.
 
 ```{r}
 #| echo: false
@@ -197,13 +197,13 @@ mayores <- mayores[,c(1,6,7)]
 gt(mayores)
 ```
 
-Se puede notar que estos sismos corresponden a la categoría de megaterremotos, pues, fueron de magnitud mayor a 8.5. También se puede decir que todos los paises que aparecen en la tabla pertenecen al anillos de fuego, lo cual tiene sentido porque es el sector donde se originan la mayoría de los terremotos que hay en el mundo.
+Se puede notar que estos sismos corresponden a la categoría de megaterremotos, pues, fueron de magnitud mayor a 8.5. También se puede decir que todos los países que aparecen en la tabla pertenecen al anillos de fuego, lo cual tiene sentido porque es el sector donde se originan la mayoría de los terremotos que hay en el mundo.
 
 ## Conclusión
 
-Como se vió anteriormente, no existe un tendencia clara en la cantidad de terremotos que hay por año, ni en la hora en la que se originan, además, lo megaterremotos que han ocurrido en el intervalo estudiado sucedieron en paises pertenecientes al anillo de fuego.
+Como se vió anteriormente, no existe un tendencia clara en la cantidad de terremotos que se producen por año, ni en la hora en la que se originan, además, lo megaterremotos que han ocurrido en el intervalo estudiado sucedieron en paises pertenecientes al anillo de fuego.
 
-A partir de los datos presentados, se puede afirmar que no existe un patrón claro en el número de terremotos que hay a medida que pasa el tiempo, ni tampoco en la hora del día en que se originan, por lo que esto visualiza claramente que los sismos sean impredecibles.
+A partir de los datos presentados, se puede afirmar que no existe un patrón definitivo en el número de terremotos que se han registrado a medida que pasa el tiempo, ni tampoco en la hora del día en que se originan, por lo que esto visualiza claramente que los sismos sean impredecibles.
 
 Considerando lo anterior, esta latente amenaza puede ocurrir en cualquier momento, por lo que sería de gran importancia saber la cantidad de terremotos que desencadenan otros desastres naturales, como por ejemplo tsunamis. Se sugiere la creación de una variable que contenga información sobre si un sismo genera o no, un tsunami, esto con el fin de conocer la cantidad de terremotos que desencadenan este fenómeno.
 
