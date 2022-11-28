@@ -24,9 +24,9 @@ Este trabajo se divide en cuatro secciones. Primero se dará información y cont
 
 ## Contexto de datos
 
-Como se dijo anteriormente, los terremotos son desastres naturales que generan grandes catastrofes alrededor del mundo . Este fenómeno se puede medir en escala Richter, que asigna un número para cuantificar la energía que libera un terremoto. Si este escalar es mayor o igual a 8.5, se dice que ha ocurrido un megaterremoto.
+Como se dijo anteriormente, los terremotos son desastres naturales que generan grandes catastrofes alrededor del mundo . Este fenómeno se puede medir en escala Richter, que asigna un número para cuantificar la energía que libera un terremoto ([MI](https://www.muyinteresante.es/ciencia/preguntas-respuestas/como-funciona-la-escala-de-richter-501481801518)) . Si este escalar es mayor o igual a 8.5, se dice que ha ocurrido un megaterremoto ([UCH](https://www.uchile.cl/noticias/141935/estudio-determina-que-en-chile-ocurre-un-megaterremoto-cada-50-anos)).
 
-Si bien los terremotos pueden ocurrir en cualquier parte del mundo, existe una región llamada el anillo de fuego, que es un sector en donde ocurre el 90% de los terremotos en el mundo. Este se ubica alrededor de las costas del oceano pacífico.
+Si bien los terremotos pueden ocurrir en cualquier parte del mundo, existe una región llamada el anillo de fuego, que es un sector en donde ocurre el 90% de los terremotos en el mundo. Este se ubica alrededor de las costas del oceano pacífico ([CNN](https://cnnespanol.cnn.com/2022/09/23/cinturon-fuego-pacifico-explainer-orix/)).
 
 La base se consiguió con el siguiente [enlace:](https://www.kaggle.com/datasets/usgs/earthquake-database) donde se encuentran datos sobre los terremotos de magnitud mayor a 5,5 que han acontecido desde 1965 a 2016.
 
@@ -211,6 +211,6 @@ Considerando lo anterior, esta latente amenaza puede ocurrir en cualquier moment
 
 -   https://cnnespanol.cnn.com/2022/09/23/cinturon-fuego-pacifico-explainer-orix/
 
--   https://www.gob.mx/cenapred/articulos/en-el-cinturon-de-fuego-del-pacifico-la-actividad-sigue-siendo-normal
+-   https://www.uchile.cl/noticias/141935/estudio-determina-que-en-chile-ocurre-un-megaterremoto-cada-50-anos
 
 -   https://www.muyinteresante.es/ciencia/preguntas-respuestas/como-funciona-la-escala-de-richter-501481801518
