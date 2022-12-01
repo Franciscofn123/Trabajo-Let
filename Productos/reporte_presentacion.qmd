@@ -1,0 +1,183 @@
+---
+title: "Terremotos a nivel mundial desde 1965 a 2016"
+author: "Francisco Fernández"
+lang: es
+format: revealjs
+editor: visual
+---
+
+## Introducción
+
+Los terremotos son liberaciones de energía que se emiten a la superficie de la tierra, debido al choque o roce de las placas tectónicas, y puede provocar daños de gran medida los cuales afectan directamente a ciudades y zonas rurales. Además, origina otros desastres naturales, tales como derrumbes o tsunamis. Como todos saben, estos desastres son una latente amenaza para las personas.
+
+## Contexto de datos
+
+Como se dijo anteriormente, los terremotos son desastres naturales que generan grandes catastrofes alrededor del mundo . Este fenómeno se puede medir en escala Richter, que asigna un número para cuantificar la energía que libera un terremoto ([MI](https://www.muyinteresante.es/ciencia/preguntas-respuestas/como-funciona-la-escala-de-richter-501481801518)) . Si este escalar es mayor o igual a 8.5, se dice que ha ocurrido un megaterremoto ([UCH](https://www.uchile.cl/noticias/141935/estudio-determina-que-en-chile-ocurre-un-megaterremoto-cada-50-anos)).
+
+
+## Descripción de variables
+::: {.r-fit-text}
+
+```{r}
+#| echo: false
+
+
+
+library(gt)
+
+nombres <- c("Fecha","Hora","Latitud","Longitud",
+          "Magnitud","País") 
+
+data.frame(Variables= nombres, 
+           Tipo = c("Numérico",
+                    "Numérico",
+                    "Numérico",
+                    "Numérico",
+                    "Numérico",
+                    "Carácter"),
+           Descripción = c(
+             "Muestra la fecha en que ocurrió el sismo",
+             "Entrega la hora en que se originó un terremoto",
+             "Señala la latitud como coordenada geográfica ",
+             "Señala la longitud como coordenada geográfica",
+             "Es la magnitud en escala Richter de los terremotos",
+             "Corresponde al país en el que sucedió el sismo") ) |> 
+  gt() |> 
+  tab_header(title = "Descripción de variables") |> 
+  tab_source_note(source_note = "Fuente: https://www.kaggle.com/datasets/usgs/earthquake-database")
+
+  
+```
+
+:::
+## Resultados
+
+Se quiere estudiar la cantidad de terremotos que hay en el mundo y su relación con variables tales como año, hora, etc. Esto con el fin de entender o estudiar el comportamiento de los sismos. Para ello se adjuntarán gráficos y tablas que entregarán información sobre la frecuencia de los sismos de acuerdo a diferentes variables.
+
+```{r}
+#| echo: false
+#| output: false
+library(gtsummary)
+library(gt)
+library(readxl)
+library(readr)
+library(dplyr)        
+library(tidyr)        
+library(stringr) 
+library(ggplot2)
+library(forcats)
+library(ggtext)  
+library(gghighlight) 
+library(showtext)
+library(ggthemes)
+library(plotrix)
+library(zoom)
+library(countrycode)
+datos <- read_csv("https://raw.githubusercontent.com/Franciscofn123/Trabajo-Let/main/Datos/terremotos_sin_procesar.csv", show_col_types = FALSE)
+v <- data.frame(datos$Date,datos$Time,datos$Latitude,datos$Longitude,datos$Type,datos$Magnitude)
+q <- read_csv("/Users/joelf/OneDrive/Documentos/let/Trabajo-Let/Datos/País.csv",show_col_types = FALSE) 
+v <- cbind(v,q)
+#cambiar nombre de variables
+names(v)= c("Fecha", "Hora","Latitud","Longitud", "Tipo", "Magnitud", "País")
+#Traducir nombres de paises----
+v[v=="Fr. S. Antarctic Lands"] <- "Tierras Antárticas Francesas"
+v[v=="S. Sudan"] <- "South Sudan"
+v[v=="Somaliland"] <- "Somalia"
+v <- v |> 
+  mutate(País = countrycode(sourcevar = País,
+                               origin = "country.name",
+                               destination = "cldr.name.es"),
+         .after = País) 
+######## se dejan las variables que se quieren ocupar, tiempo, latitud, longitud, magnitud, tipo y pais de origen
+####### se trasforma hora de terremoto a hora, para saber a que hora fue (como funcion parte entera)
+v$Hora <- format(as.POSIXct(v$Hora), format = "%H")
+v$Hora <- as.numeric(v$Hora)
+####### tambien se trasforma las fechas a años, para asi saber cuantos terremotos hay a medida que pasa el tiempo
+v$Fecha <- as.numeric(substring(v$Fecha,first = 7))
+v$Fecha[20651] <- 2011
+v$Fecha[7513] <- 1985 
+v$Fecha[3379] <- 1975
+```
+
+## Figura 1
+
+```{r}
+#| echo: false
+library(ggplot2)
+colores <- rep("#79d0cc",2016-1965+1)
+colores[2] <- "#53868B"
+colores[47] <- "cadetblue"
+
+v |> 
+  filter(Tipo=="Earthquake") |> 
+  ggplot(aes(x=Fecha))+
+  geom_bar(fill = colores, linewidth =1 ) +
+  labs(title = "Cantidad de terremotos en el mundo por año",
+       subtitle = "período entre 1965 y 2016",
+       y ="Cantidad",
+       x = "Años")+
+  geom_text(x=1966, y=243, label="233",size=2.5)+
+  geom_text(x=2011, y=723, label="713",size=2.5)+
+  
+  scale_x_continuous(breaks = seq(1965, 2016, by = 5))+
+  theme_bw()
+```
+
+## Figura 2
+
+```{r}
+#| echo: false
+colo <- rep("#79d0cc",2016-1965+1)
+colo[13] <- "#53868B"
+colo[46] <- "cadetblue"
+v |> 
+  filter(Tipo=="Earthquake", País=="Chile") |> 
+  ggplot(aes(x=Fecha))+
+  geom_bar(fill = colo, linewidth =1 ) + 
+labs(title = "Cantidad de terremotos que ocurren en Chile a medida que pasa el tiempo",
+     subtitle = "período entre 1965 y 2016",
+     y ="Cantidad",
+     x = "Años")+
+  geom_text(x=1977, y=5, label="2",size=3)+
+  geom_text(x=2010, y=96, label="94",size=3)+
+  scale_x_continuous(breaks = seq(1965, 2016, by = 5))+
+  theme_bw()
+```
+
+## Figura 3
+
+```{r}
+#| echo: false
+v <- v[-7513,]
+v <- v[-3379,]
+v <- v[-20649,]
+v |> 
+  filter(Tipo=="Earthquake") |> 
+  ggplot(aes(x=Hora))+
+  geom_bar(fill="#00CDCD")+
+  theme_bw()+
+  labs(title = "Número de sismos en el mundo según la hora en que se origina",
+       subtitle = "período entre 1965 y 2016", y="Cantidad", x= "Hora (0-24)")+
+  scale_x_continuous(breaks = seq(0, 24, by = 6))
+```
+
+## Figura 4
+
+```{r}
+#| echo: false
+library(gtsummary)
+library(gt)
+#encontrar maximos en magnitud por año
+mayores <- v[order(v$Magnitud, decreasing = TRUE),]
+mayores<- mayores[c(1,2,3,4,5),]
+mayores <- mayores[,c(1,6,7)]
+#tabla 5 mayores terremotos en el periodo estudiado
+gt(mayores)
+
+```
+
+
+## Conclusión
+
+Como se vió anteriormente, no existe un tendencia clara en la cantidad de terremotos que se producen por año, ni en la hora en la que se originan.
+
