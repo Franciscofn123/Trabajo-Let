@@ -14,10 +14,9 @@ Los terremotos son liberaciones de energía que se emiten a la superficie de la 
 
 Como se dijo anteriormente, los terremotos son desastres naturales que generan grandes catastrofes alrededor del mundo . Este fenómeno se puede medir en escala Richter, que asigna un número para cuantificar la energía que libera un terremoto ([MI](https://www.muyinteresante.es/ciencia/preguntas-respuestas/como-funciona-la-escala-de-richter-501481801518)) . Si este escalar es mayor o igual a 8.5, se dice que ha ocurrido un megaterremoto ([UCH](https://www.uchile.cl/noticias/141935/estudio-determina-que-en-chile-ocurre-un-megaterremoto-cada-50-anos)).
 
-
 ## Descripción de variables
-::: {.r-fit-text}
 
+::: r-fit-text
 ```{r}
 #| echo: false
 
@@ -48,8 +47,8 @@ data.frame(Variables= nombres,
 
   
 ```
-
 :::
+
 ## Resultados
 
 Se quiere estudiar la cantidad de terremotos que hay en el mundo y su relación con variables tales como año, hora, etc. Esto con el fin de entender o estudiar el comportamiento de los sismos. Para ello se adjuntarán gráficos y tablas que entregarán información sobre la frecuencia de los sismos de acuerdo a diferentes variables.
@@ -175,7 +174,6 @@ mayores <- mayores[,c(1,6,7)]
 gt(mayores)
 
 ```
-
 
 ## Conclusión
 
